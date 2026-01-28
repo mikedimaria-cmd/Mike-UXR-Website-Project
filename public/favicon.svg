@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Dark background -->
+  <rect width="64" height="64" fill="#0a0514" rx="8"/>
+  
+  <!-- Subtle grid pattern for retro feel -->
+  <defs>
+    <pattern id="grid" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M 8 0 L 0 0 0 8" fill="none" stroke="#4a1a6b" stroke-width="0.5" opacity="0.3"/>
+    </pattern>
+    
+    <!-- Gradient for MD letters -->
+    <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00f0ff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ff00a0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b400ff;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Glow effect -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Grid overlay -->
+  <rect width="64" height="64" fill="url(#grid)" opacity="0.2"/>
+  
+  <!-- MD Letters with retro/synthwave styling -->
+  <g filter="url(#glow)">
+    <!-- M -->
+    <path d="M 12 20 L 12 44 L 18 44 L 18 32 L 20 32 L 20 44 L 26 44 L 26 20 L 20 20 L 20 28 L 18 28 L 18 20 Z" 
+          fill="url(#neonGradient)" 
+          stroke="#00f0ff" 
+          stroke-width="0.5" 
+          opacity="0.9"/>
+    
+    <!-- D -->
+    <path d="M 32 20 L 32 44 L 42 44 Q 48 44 48 32 Q 48 20 42 20 Z M 38 20 Q 44 20 44 32 Q 44 44 38 44 L 38 20 Z" 
+          fill="url(#neonGradient)" 
+          stroke="#00f0ff" 
+          stroke-width="0.5" 
+          opacity="0.9"/>
+  </g>
+  
+  <!-- Corner accent lines for retro feel -->
+  <line x1="8" y1="8" x2="12" y2="8" stroke="#00f0ff" stroke-width="1" opacity="0.6"/>
+  <line x1="8" y1="8" x2="8" y2="12" stroke="#00f0ff" stroke-width="1" opacity="0.6"/>
+  <line x1="56" y1="8" x2="52" y2="8" stroke="#ff00a0" stroke-width="1" opacity="0.6"/>
+  <line x1="56" y1="8" x2="56" y2="12" stroke="#ff00a0" stroke-width="1" opacity="0.6"/>
+  <line x1="8" y1="56" x2="12" y2="56" stroke="#b400ff" stroke-width="1" opacity="0.6"/>
+  <line x1="8" y1="56" x2="8" y2="52" stroke="#b400ff" stroke-width="1" opacity="0.6"/>
+  <line x1="56" y1="56" x2="52" y2="56" stroke="#00f0ff" stroke-width="1" opacity="0.6"/>
+  <line x1="56" y1="56" x2="56" y2="52" stroke="#00f0ff" stroke-width="1" opacity="0.6"/>
+</svg>
