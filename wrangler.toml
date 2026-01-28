@@ -1,0 +1,12 @@
+# Cloudflare Pages configuration
+# This file helps Cloudflare Pages understand your project structure
+
+[build]
+command = "npm run build"
+cwd = "."
+
+[build.environment_variables]
+NODE_VERSION = "18"
+
+# Output directory for Vite builds
+# Cloudflare Pages will look for files in the 'dist' directory
