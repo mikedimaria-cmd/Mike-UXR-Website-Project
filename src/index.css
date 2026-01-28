@@ -1,0 +1,258 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Synthwave Dark Palette */
+    --background: 260 20% 5%;
+    --foreground: 300 100% 95%;
+
+    --card: 260 25% 8%;
+    --card-foreground: 300 100% 95%;
+
+    --popover: 260 25% 8%;
+    --popover-foreground: 300 100% 95%;
+
+    /* Hot Pink/Magenta Primary */
+    --primary: 320 100% 60%;
+    --primary-foreground: 260 20% 5%;
+
+    /* Electric Cyan Secondary */
+    --secondary: 185 100% 50%;
+    --secondary-foreground: 260 20% 5%;
+
+    --muted: 260 20% 15%;
+    --muted-foreground: 260 20% 60%;
+
+    /* Neon Purple Accent */
+    --accent: 280 100% 65%;
+    --accent-foreground: 260 20% 5%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 260 30% 20%;
+    --input: 260 30% 20%;
+    --ring: 320 100% 60%;
+
+    --radius: 0.5rem;
+
+    /* Synthwave Custom Colors */
+    --neon-pink: 320 100% 60%;
+    --neon-cyan: 185 100% 50%;
+    --neon-purple: 280 100% 65%;
+    --neon-blue: 220 100% 60%;
+    --sunset-orange: 25 100% 55%;
+    --sunset-yellow: 45 100% 60%;
+    --grid-color: 280 100% 40%;
+    --glow-pink: 320 100% 60%;
+    --glow-cyan: 185 100% 50%;
+
+    --sidebar-background: 260 25% 8%;
+    --sidebar-foreground: 300 100% 95%;
+    --sidebar-primary: 320 100% 60%;
+    --sidebar-primary-foreground: 260 20% 5%;
+    --sidebar-accent: 280 100% 65%;
+    --sidebar-accent-foreground: 260 20% 5%;
+    --sidebar-border: 260 30% 20%;
+    --sidebar-ring: 320 100% 60%;
+  }
+
+  .dark {
+    --background: 260 20% 5%;
+    --foreground: 300 100% 95%;
+    --card: 260 25% 8%;
+    --card-foreground: 300 100% 95%;
+    --popover: 260 25% 8%;
+    --popover-foreground: 300 100% 95%;
+    --primary: 320 100% 60%;
+    --primary-foreground: 260 20% 5%;
+    --secondary: 185 100% 50%;
+    --secondary-foreground: 260 20% 5%;
+    --muted: 260 20% 15%;
+    --muted-foreground: 260 20% 60%;
+    --accent: 280 100% 65%;
+    --accent-foreground: 260 20% 5%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 260 30% 20%;
+    --input: 260 30% 20%;
+    --ring: 320 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+
+  /* Custom text selection - Neon Pink background with white text */
+  ::selection {
+    background-color: hsl(var(--neon-pink));
+    color: white;
+  }
+
+  ::-moz-selection {
+    background-color: hsl(var(--neon-pink));
+    color: white;
+  }
+
+  /* Custom Scrollbar - Solid Cyan */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+    border-left: 1px solid hsl(var(--border));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--neon-cyan));
+    border-radius: 5px;
+    border: 2px solid hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--neon-cyan) / 0.8);
+    box-shadow: 0 0 10px hsl(var(--neon-cyan) / 0.5);
+  }
+
+  /* Firefox scrollbar support */
+  html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--neon-cyan)) hsl(var(--background));
+  }
+}
+
+@layer components {
+  .text-glow-pink {
+    text-shadow: 
+      0 0 10px hsl(var(--neon-pink) / 0.8),
+      0 0 20px hsl(var(--neon-pink) / 0.6),
+      0 0 40px hsl(var(--neon-pink) / 0.4),
+      0 0 80px hsl(var(--neon-pink) / 0.2);
+  }
+
+  .text-glow-cyan {
+    text-shadow: 
+      0 0 10px hsl(var(--neon-cyan) / 0.8),
+      0 0 20px hsl(var(--neon-cyan) / 0.6),
+      0 0 40px hsl(var(--neon-cyan) / 0.4),
+      0 0 80px hsl(var(--neon-cyan) / 0.2);
+  }
+
+  .text-glow-purple {
+    text-shadow: 
+      0 0 10px hsl(var(--neon-purple) / 0.8),
+      0 0 20px hsl(var(--neon-purple) / 0.6),
+      0 0 40px hsl(var(--neon-purple) / 0.4);
+  }
+
+  .box-glow-pink {
+    box-shadow: 
+      0 0 15px hsl(var(--neon-pink) / 0.5),
+      0 0 30px hsl(var(--neon-pink) / 0.3),
+      inset 0 0 15px hsl(var(--neon-pink) / 0.1);
+  }
+
+  .box-glow-cyan {
+    box-shadow: 
+      0 0 15px hsl(var(--neon-cyan) / 0.5),
+      0 0 30px hsl(var(--neon-cyan) / 0.3),
+      inset 0 0 15px hsl(var(--neon-cyan) / 0.1);
+  }
+
+  .gradient-sunset {
+    background: linear-gradient(
+      180deg,
+      hsl(var(--sunset-yellow)) 0%,
+      hsl(var(--sunset-orange)) 30%,
+      hsl(var(--neon-pink)) 60%,
+      hsl(var(--neon-purple)) 100%
+    );
+  }
+
+  .gradient-chrome {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--neon-cyan)) 0%,
+      hsl(var(--neon-pink)) 50%,
+      hsl(var(--neon-purple)) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .synthwave-grid {
+    background-image: 
+      linear-gradient(hsl(var(--grid-color) / 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--grid-color) / 0.3) 1px, transparent 1px);
+    background-size: 60px 60px;
+    background-position: center center;
+  }
+
+  .nav-glass {
+    background: hsl(var(--background) / 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--neon-pink) / 0.3);
+    box-shadow: 
+      0 8px 32px hsl(var(--neon-pink) / 0.15),
+      inset 0 0 0 1px hsl(var(--neon-pink) / 0.1);
+  }
+
+  .card-synthwave {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--card)) 0%,
+      hsl(260 25% 12%) 100%
+    );
+    border: 1px solid hsl(var(--neon-pink) / 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .card-synthwave:hover {
+    border-color: hsl(var(--neon-pink) / 0.5);
+    box-shadow: 
+      0 0 30px hsl(var(--neon-pink) / 0.2),
+      inset 0 0 20px hsl(var(--neon-pink) / 0.05);
+  }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .transform-3d {
+    transform-style: preserve-3d;
+  }
+
+  /* Terminal cursor blink animation */
+  @keyframes blink {
+    0%, 50% {
+      opacity: 1;
+    }
+    51%, 100% {
+      opacity: 0;
+    }
+  }
+
+  .animate-blink {
+    animation: blink 1s infinite;
+  }
+}
