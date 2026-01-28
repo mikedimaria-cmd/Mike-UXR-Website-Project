@@ -1,5 +1,6 @@
 import Portrait from "./Portrait";
-import ExperienceTimeline from "./ExperienceTimeline";
+import ExperienceLog from "./portfolio/ExperienceLog";
+import { experience } from "@/data/portfolio";
 
 const AboutSection = () => {
   return (
@@ -28,18 +29,14 @@ const AboutSection = () => {
             <span className="text-secondary text-glow-cyan">UX Researcher</span>
           </h2>
           
-          <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+          <p className="text-muted-foreground text-lg leading-relaxed">
             I love decoding complexity and I have a knack for unpacking intricate product domains.
-          </p>
-          
-          <p className="text-muted-foreground leading-relaxed">
-            I spent years demystifying the world of advanced investing (Option Chains, anyone?) at Fidelity Investments. I then followed that by diving deep into how developers build, test, and deploy code for Google Cloud.
           </p>
         </div>
 
-        {/* Row 3: Experience Timeline */}
+        {/* Row 3: Experience Log */}
         <div className="max-w-2xl mx-auto">
-          <ExperienceTimeline />
+          <ExperienceLog experiences={experience} />
         </div>
       </div>
     </section>

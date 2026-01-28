@@ -1,28 +1,6 @@
 import { useRef, useState, useEffect } from "react";
-import ProjectCard from "./ProjectCard";
-
-const projects = [
-  {
-    title: "E-Commerce Redesign",
-    category: "User Research",
-    description: "Led comprehensive user research to redesign checkout flow, increasing conversion by 34%.",
-  },
-  {
-    title: "Healthcare App",
-    category: "UX Strategy",
-    description: "Designed patient portal improving appointment scheduling efficiency by 60%.",
-  },
-  {
-    title: "FinTech Dashboard",
-    category: "Usability Testing",
-    description: "Conducted usability studies to optimize data visualization for financial analysts.",
-  },
-  {
-    title: "SaaS Onboarding",
-    category: "Journey Mapping",
-    description: "Mapped user journeys to reduce onboarding time from 2 weeks to 3 days.",
-  },
-];
+import ProjectCard from "./portfolio/ProjectCard";
+import { projects } from "@/data/portfolio";
 
 const WorkSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -67,7 +45,7 @@ const WorkSection = () => {
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <div
-              key={index}
+              key={project.id}
               className={`transition-all duration-700 ${
                 isInView 
                   ? 'opacity-100 translate-y-0' 
@@ -77,7 +55,7 @@ const WorkSection = () => {
                 transitionDelay: isInView ? `${index * 150}ms` : '0ms',
               }}
             >
-              <ProjectCard {...project} index={index} />
+              <ProjectCard project={project} />
             </div>
           ))}
         </div>

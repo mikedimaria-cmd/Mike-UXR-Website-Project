@@ -9,7 +9,7 @@ import ContactSection from "@/components/ContactSection";
 
 const Index = () => {
   return (
-    <div className="relative min-h-screen bg-background overflow-x-hidden">
+    <main className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <ScrollProgressBar />
       <FloatingNav />
       <HeroSection />
@@ -24,7 +24,7 @@ const Index = () => {
         </div>
       </section>
       <ContactSection />
-    </div>
+    </main>
   );
 };
 
