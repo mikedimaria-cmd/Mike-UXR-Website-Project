@@ -9,13 +9,13 @@ const ContactSection = () => {
         <span className="font-display text-sm tracking-[0.3em] text-secondary uppercase">
           Get In Touch
         </span>
-        <h2 className="font-display text-4xl md:text-6xl font-bold mt-4 mb-8">
+        <h2 className="font-display text-4xl md:text-6xl font-medium mt-4 mb-8">
           Let's Geek Out
           <br />
-          <span className="gradient-chrome">Together</span>
+          <span className="gradient-chrome text-glow-pink">Together</span>
         </h2>
         
-        <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-12">
+        <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-12 leading-relaxed">
           I love diving deep into my passions and connecting with others who do the same. 
           Whether you resonate with my work or just want to dive deep into the nuances of user research, I'd love to hear from you.
         </p>

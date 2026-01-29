@@ -1,5 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import ParallaxSection from "./ParallaxSection";
+import SpotlightText from "./SpotlightText";
 
 const HeroSection = () => {
   return (
@@ -35,8 +36,8 @@ const HeroSection = () => {
         </ParallaxSection>
         
         <ParallaxSection speed={-0.15}>
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-black leading-tight mb-8">
-            <span className="gradient-chrome">Decoding</span>
+          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-8">
+            <SpotlightText>Decoding</SpotlightText>
             <br />
             <span className="text-foreground">Complexity</span>
           </h1>

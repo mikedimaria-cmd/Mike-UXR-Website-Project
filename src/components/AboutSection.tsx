@@ -22,7 +22,7 @@ const AboutSection = () => {
           <span className="font-display text-sm tracking-[0.3em] text-secondary uppercase">
             About Me
           </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold mt-4 mb-8">
+          <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-8">
             I consider myself a{" "}
             <span className="text-primary text-glow-pink">Modern</span>
             <br />

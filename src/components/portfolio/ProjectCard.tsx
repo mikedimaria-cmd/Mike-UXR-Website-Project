@@ -77,10 +77,10 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         {/* Header with status badge */}
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
-            <h3 className={`font-display text-2xl font-bold ${styles.text} ${styles.textGlow} mb-2`}>
+            <h3 className={`font-display text-2xl font-medium ${styles.text} ${styles.textGlow} mb-2`}>
               {project.title}
             </h3>
-            <p className="text-muted-foreground text-sm font-mono">
+            <p className="text-muted-foreground text-base font-mono">
               {project.role}
             </p>
           </div>
@@ -95,7 +95,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         </div>
 
         {/* Description */}
-        <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+        <p className="text-muted-foreground text-base leading-relaxed mb-6">
           {project.description}
         </p>
 
@@ -124,7 +124,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
               target="_blank"
               rel="noopener noreferrer"
               className={`
-                flex items-center gap-2 text-sm font-semibold
+                flex items-center gap-2 text-base font-medium
                 ${styles.text} group/link
                 transition-all duration-300
               `}

@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - 2026-01-28
+
+### Added
+- SpotlightText component with interactive cursor-following gradient effect
+  - Two-layer system: static linear gradient base + interactive radial overlay
+  - Smooth 500ms opacity transitions
+  - Subtle easter egg lighting effect on hover
+  - Applied to "Decoding" in hero section
+
+### Changed
+- Typography system overhaul for improved readability
+  - Font stack: Orbitron/Rajdhani → Space Grotesk/Inter
+  - Font weights: Headers use font-medium instead of font-bold
+  - Text sizes: Increased from text-sm to text-base for descriptions
+  - Line height: Added leading-relaxed to all paragraphs
+- Enhanced gradient-chrome effect
+  - Increased brightness and saturation
+  - Added multi-color glow (cyan → pink → purple)
+  - More prominent on "Decoding" and "Together"
+
+### Technical
+- Improved dark mode legibility
+- Better contrast for white-on-black text
+- Professional typography while maintaining synthwave aesthetic
+
 ## [0.1.1] - 2026-01-28
 
 ### Changed

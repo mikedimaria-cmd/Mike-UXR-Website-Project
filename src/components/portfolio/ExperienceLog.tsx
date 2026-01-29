@@ -58,17 +58,17 @@ const ExperienceLog = ({ experiences }: ExperienceLogProps) => {
 
                 {/* Company and Role */}
                 <div>
-                  <h3 className="font-display text-xl font-bold text-foreground mb-1">
+                  <h3 className="font-display text-xl font-medium text-foreground mb-1">
                     {exp.role}
                   </h3>
-                  <p className="font-display text-lg text-primary text-glow-pink">
+                  <p className="font-display text-lg font-medium text-primary text-glow-pink">
                     {exp.company}
                   </p>
-                  <p className="text-sm text-muted-foreground mt-1">{exp.location}</p>
+                  <p className="text-base text-muted-foreground mt-1">{exp.location}</p>
                 </div>
 
                 {/* Description */}
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground text-base leading-relaxed">
                   {exp.description}
                 </p>
 

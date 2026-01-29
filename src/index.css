@@ -194,6 +194,53 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    filter: brightness(1.3) saturate(1.4);
+    text-shadow: 
+      0 0 20px hsl(var(--neon-cyan) / 0.4),
+      0 0 40px hsl(var(--neon-pink) / 0.3),
+      0 0 60px hsl(var(--neon-purple) / 0.2);
+  }
+
+  /* Spotlight Text Container - holds both layers */
+  .spotlight-text-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Layer 1: Base static linear gradient */
+  .spotlight-text-base {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--neon-cyan)) 0%,
+      hsl(var(--neon-pink)) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: brightness(1.2) saturate(1.2);
+    display: inline-block;
+  }
+
+  /* Layer 2: Interactive radial gradient overlay */
+  .spotlight-text-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle 180px at var(--gradient-x) var(--gradient-y),
+      hsl(var(--neon-cyan) / 0.7) 0%,
+      hsl(var(--neon-cyan) / 0.4) 30%,
+      hsl(var(--neon-pink) / 0.5) 60%,
+      hsl(var(--neon-pink) / 0.3) 80%,
+      transparent 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: opacity 500ms ease-in-out;
+    pointer-events: none;
   }
 
   .synthwave-grid {
