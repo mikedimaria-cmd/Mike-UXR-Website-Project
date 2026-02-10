@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.3] - 2026-01-28
+
+### Changed
+- Redesigned ExperienceLog component with terminal-style timeline
+  - Terminal-style system line with clean cyan data rail
+  - Intersection Observer for scroll-triggered animations
+  - Circuit connector lines (hash marks) connecting icons to content
+  - Terminal start node decoration at top
+  - Enhanced icon bubbles with glow effects on visibility
+  - Grid-based responsive layout (60px/1fr mobile, 100px/1fr desktop)
+  - Vibe-based coloring for icons and company names
+  - Improved spacing and typography
+  - Glassmorphic skill tags
+
 ## [0.2.2] - 2026-01-28
 
 ### Changed
