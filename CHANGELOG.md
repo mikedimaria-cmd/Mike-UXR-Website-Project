@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.1] - 2026-01-28
+
+### Changed
+- Updated SkillsMatrix component with enhanced design
+  - Header changed to "Character Attributes"
+  - Updated gradient bars: Purple → Cyan
+  - Added "The Arsenal" section header
+  - Enhanced bar effects with shine and improved styling
+  - Better responsive padding and hover effects
+- Simplified About section text
+  - Removed "I love decoding complexity and" for cleaner messaging
+- Updated skills data
+  - Attributes: Qualitative Strategy (98%), Systems Thinking (95%), AI-Augmented Ops (90%), Rapid Prototyping (75%), Quantitative Fluency (70%)
+  - Arsenal: UserZoom, Ethnio, Optimal Workshop, Qualtrics, Dovetail, React, Tailwind, Firebase, Cloud Build, Lovable, Gemini, Claude Sonnet, ChatGPT
+
 ## [0.2.0] - 2026-01-28
 
 ### Added

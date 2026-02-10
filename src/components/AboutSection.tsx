@@ -30,7 +30,7 @@ const AboutSection = () => {
           </h2>
           
           <p className="text-muted-foreground text-lg leading-relaxed">
-            I love decoding complexity and I have a knack for unpacking intricate product domains.
+            I have a knack for unpacking intricate product domains.
           </p>
         </div>
 
