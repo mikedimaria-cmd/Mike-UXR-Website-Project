@@ -287,6 +287,15 @@
     transform-style: preserve-3d;
   }
 
+  /* Classified title flicker (keeps base text crisp) */
+  @keyframes classified-flicker {
+    0%, 92%, 100% { opacity: 0; }
+    93% { opacity: 0.55; }
+    94% { opacity: 0.15; }
+    95% { opacity: 0.65; }
+    96% { opacity: 0; }
+  }
+
   /* Terminal cursor blink animation */
   @keyframes blink {
     0%, 50% {

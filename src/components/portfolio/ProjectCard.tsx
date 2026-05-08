@@ -58,7 +58,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
     <div
       className={`
-        card-synthwave rounded-2xl p-8 
+        card-synthwave rounded-2xl p-8 h-full flex flex-col
         border-2 ${styles.border} ${styles.borderHover}
         ${styles.boxGlow}
         transform transition-all duration-500 
@@ -116,23 +116,38 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       )}
       
       {/* Content */}
-      <div className="relative z-10">
+      <div className="relative z-10 flex flex-col h-full">
         {/* Header with status badge */}
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
             <h3 className={`font-display text-2xl font-medium ${styles.text} ${styles.textGlow} mb-2`}>
               {isConfidential ? (
                 <span className="relative inline-flex items-center">
-                  <span className="relative">
-                    {/* Glitch-like duplicate layers */}
+                  {/* Crisp base text with controlled "classified" styling */}
+                  <span
+                    className="relative"
+                    style={{
+                      textShadow:
+                        "0 0 10px rgba(255,80,80,0.20), 0 0 22px rgba(255,80,80,0.10)",
+                    }}
+                  >
+                    {/* Flicker/glitch overlays (no large transforms; keep letterforms sharp) */}
                     <span
-                      className="absolute inset-0 text-destructive/80 translate-x-[1px] -translate-y-[1px] opacity-60"
+                      className="absolute inset-0 text-destructive/50 opacity-0 pointer-events-none"
+                      style={{
+                        transform: "translate(0.5px, -0.5px)",
+                        animation: "classified-flicker 4.2s steps(1,end) infinite",
+                      }}
                       aria-hidden="true"
                     >
                       {project.title}
                     </span>
                     <span
-                      className="absolute inset-0 text-amber-400/60 -translate-x-[1px] translate-y-[1px] opacity-50"
+                      className="absolute inset-0 text-amber-300/40 opacity-0 pointer-events-none"
+                      style={{
+                        transform: "translate(-0.5px, 0.5px)",
+                        animation: "classified-flicker 5.1s steps(1,end) infinite 0.8s",
+                      }}
                       aria-hidden="true"
                     >
                       {project.title}
@@ -187,7 +202,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         </div>
 
         {/* Links */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 mt-auto">
           {project.link && (
             <a
               href={project.link}

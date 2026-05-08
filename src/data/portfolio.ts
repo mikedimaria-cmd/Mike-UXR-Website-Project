@@ -66,7 +66,7 @@ export const projects: Project[] = [
     id: "case-studies-confidential",
     title: "UX Research Case Studies",
     description:
-      "Deep foundational and generative research across three industries. Full case studies available on request. Focus on including creator monetization strategy, DevOps developer workflows, and FinTech trading platforms.",
+      "Deep foundational and generative research across three industries. Full case studies available on request.",
     role: "YouTube · Google Cloud · Fidelity Investments",
     techStack: ["CLEARANCE REQUIRED"],
     link: "mailto:mike.dimaria@gmail.com?subject=Case%20Study%20Access%20Request",
