@@ -47,7 +47,6 @@ This project is built with:
 - **Tailwind CSS** - Styling
 - **shadcn-ui** - UI component library (Radix UI primitives)
 - **React Router** - Client-side routing
-- **TanStack Query** - Data fetching and state management
 - **Vitest** - Testing framework
 
 ## 🎨 Design

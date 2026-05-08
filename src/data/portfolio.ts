@@ -42,6 +42,17 @@ export const projects: Project[] = [
     vibe: "neon-cyan"
   },
   {
+    id: "lorekeeper",
+    title: "Lorekeeper",
+    description:
+      "A personal game tracking PWA with real-time IGDB search, Supabase persistence, and a moody cinematic design system. Track your library across Xbox, PS5, and PC with notes on why each game matters.",
+    role: "Full-Stack Developer (Vibe-Coded)",
+    techStack: ["React", "Vite", "Supabase", "IGDB API", "Firebase", "Tailwind"],
+    link: "https://lorekeeper-games.web.app",
+    status: "Live",
+    vibe: "neon-cyan",
+  },
+  {
     id: "portfolio-v2",
     title: "Mike-DiMaria.com v2",
     description: "The platform you are looking at. A portfolio reimagined as a retro-futurist digital terminal, bridging professional UXR work with personal creative engineering.",
@@ -50,6 +61,17 @@ export const projects: Project[] = [
     link: "https://mike-dimaria.com",
     status: "Building",
     vibe: "neon-purple"
+  },
+  {
+    id: "case-studies-confidential",
+    title: "UX Research Case Studies",
+    description:
+      "Deep foundational and generative research across three industries. Full case studies available on request. Focus on including creator monetization strategy, DevOps developer workflows, and FinTech trading platforms.",
+    role: "YouTube · Google Cloud · Fidelity Investments",
+    techStack: ["CLEARANCE REQUIRED"],
+    link: "mailto:mike.dimaria@gmail.com?subject=Case%20Study%20Access%20Request",
+    status: "Building",
+    vibe: "neon-purple",
   }
 ];
 
@@ -72,7 +94,8 @@ export const experience: ExperienceItem[] = [
     role: "Research Lead & Strategist",
     period: "2022 - Present",
     location: "New York, NY",
-    description: "Leading foundational research for the Partner Program. Driving strategy for the multi-billion dollar creator economy, focusing on monetization and creator success.",
+    description:
+      "Leading foundational research for the YouTube Partner Program. Beyond traditional research, I've built custom data pipelines via the Qualtrics API, written SQL to join internal datasets, and shipped live longitudinal dashboards to track creator sentiment over time.",
     skills: ["Creator Economy", "Monetization Strategy", "Global Research"],
     icon: Globe,
     vibe: "neon-pink"

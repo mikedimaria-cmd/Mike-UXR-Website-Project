@@ -83,12 +83,11 @@ project-root/
 │   │   ├── AboutSection.tsx
 │   │   ├── CompanyLogoStrip.tsx
 │   │   ├── ContactSection.tsx
-│   │   ├── ExperienceTimeline.tsx
 │   │   ├── FloatingNav.tsx
 │   │   ├── HeroSection.tsx
 │   │   ├── ParallaxSection.tsx
 │   │   ├── Portrait.tsx
-│   │   ├── ProjectCard.tsx
+│   │   ├── portfolio/         # ProjectCard, ExperienceLog
 │   │   ├── ScrollProgressBar.tsx
 │   │   ├── SkillsMatrix.tsx
 │   │   ├── SynthwaveSun.tsx

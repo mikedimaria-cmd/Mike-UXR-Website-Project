@@ -5,8 +5,8 @@ const attributes = [
   { name: "Qualitative Strategy", level: 98 }, // Your superpower (Renamed from Strategic Foresight)
   { name: "Systems Thinking", level: 95 },     // The "Complexity" decoder
   { name: "AI-Augmented Ops", level: 90 },     // The modern differentiator
-  { name: "Rapid Prototyping", level: 75 },    // The "Builder" skill
-  { name: "Quantitative Fluency", level: 70 }, // The solid support skill
+  { name: "Rapid Prototyping", level: 82 },    // The "Builder" skill
+  { name: "Quantitative Fluency", level: 78 }, // The solid support skill
 ];
 
 // The Tools of the Trade
@@ -16,7 +16,11 @@ const arsenal = [
   // Build & Ship
   "React", "Tailwind", "Firebase", "Cloud Build", "Lovable",
   // AI & Automation
-  "Gemini", "Claude Sonnet", "ChatGPT"
+  "Gemini",
+  "Claude Sonnet",
+  "Cursor AI",
+  "ChatGPT",
+  "Google Antigravity",
 ];
 
 const SkillsMatrix = () => {

@@ -24,6 +24,8 @@ const FloatingNav = () => {
     { label: "Contact", href: "#contact" },
   ];
 
+  const resumeHref = "/Mike_DiMaria_Resume_2025.pdf";
+
   const handleNavClick = () => {
     setMobileOpen(false);
   };
@@ -41,7 +43,7 @@ const FloatingNav = () => {
         }`}
       >
         <a
-          href="#"
+          href="#main-content"
           className={`font-display font-bold transition-all duration-500 ${
             scrolled ? "text-sm px-3 py-2" : "text-base px-4 py-2"
           }`}
@@ -72,6 +74,14 @@ const FloatingNav = () => {
             </a>
           ))}
           <a
+            href={resumeHref}
+            className={`border border-border text-foreground/80 rounded-full font-semibold hover:border-secondary hover:text-secondary hover:box-glow-cyan transition-all duration-500 whitespace-nowrap ${
+              scrolled ? "ml-1 px-4 py-2 text-sm" : "ml-2 px-5 py-2.5 text-sm"
+            }`}
+          >
+            Download Resume
+          </a>
+          <a
             href="#contact"
             className={`bg-primary text-primary-foreground rounded-full font-semibold hover:box-glow-pink transition-all duration-500 whitespace-nowrap ${
               scrolled ? "ml-1 px-4 py-2 text-sm" : "ml-2 px-5 py-2.5 text-sm"
@@ -85,7 +95,7 @@ const FloatingNav = () => {
       {/* Mobile Navigation */}
       <div className="nav-glass rounded-full flex md:hidden items-center px-3 py-2 gap-2">
         <a
-          href="#"
+          href="#main-content"
           className="font-display font-bold text-sm px-2 py-1"
         >
           <span className="gradient-chrome">MIKE_DIMARIA</span>
@@ -111,6 +121,13 @@ const FloatingNav = () => {
                   {item.label}
                 </a>
               ))}
+              <a
+                href={resumeHref}
+                onClick={handleNavClick}
+                className="px-6 py-3 border border-border rounded-full text-sm font-semibold hover:border-secondary hover:text-secondary hover:box-glow-cyan transition-all whitespace-nowrap"
+              >
+                Download Resume
+              </a>
               <a
                 href="#contact"
                 onClick={handleNavClick}

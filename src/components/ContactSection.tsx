@@ -28,6 +28,12 @@ const ContactSection = () => {
             <span>SAY HELLO</span>
             <span className="transform group-hover:translate-x-1 transition-transform">→</span>
           </a>
+          <a
+            href="/Mike_DiMaria_Resume_2025.pdf"
+            className="px-10 py-5 border border-border rounded-full font-display font-bold tracking-wider text-sm hover:border-secondary hover:text-secondary hover:box-glow-cyan transition-all duration-300 whitespace-nowrap"
+          >
+            Download Resume
+          </a>
           
           <div className="flex items-center gap-4">
             <a
@@ -52,7 +58,7 @@ const ContactSection = () => {
         {/* Footer */}
         <div className="mt-24 pt-8 border-t border-border/50">
           <p className="text-muted-foreground text-sm">
-            Designed and (Vibe) Coded by M. DiMaria – Copyright 2026
+            Designed and coded by M. DiMaria – Copyright 2026
           </p>
         </div>
       </div>

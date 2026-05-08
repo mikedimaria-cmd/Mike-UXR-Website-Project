@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] - 2026-05-08
+
+### Added
+- Added two new Featured Work cards
+  - Lorekeeper (Live, cyan vibe)
+  - Confidential "UX Research Case Studies" card with request-access CTA and classified visual treatment
+- Added resume download links
+  - Nav: "Download Resume" button
+  - Contact section: secondary "Download Resume" action
+
+### Changed
+- Updated homepage copy
+  - Hero subheadline refreshed
+  - About headline updated to "Research-Oriented Builder & Strategist" with existing gradient treatments preserved
+- Updated SkillsMatrix content
+  - Attributes: Rapid Prototyping (82%), Quantitative Fluency (78%)
+  - Arsenal tags: added Cursor AI and Google Antigravity
+- Updated YouTube Creator UX experience description with concrete builder outputs (pipelines, SQL, dashboards)
+- Improved performance and accessibility on the homepage
+  - Lazy-loaded below-the-fold sections
+  - Added skip-to-content link and `#main-content` anchor behavior
+
+### Technical
+- Removed unused TanStack Query + Sonner wiring from the app shell
+- Resolved lint errors in shadcn UI components and Tailwind config
+
 ## [0.2.3] - 2026-01-28
 
 ### Changed

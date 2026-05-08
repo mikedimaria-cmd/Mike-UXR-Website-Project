@@ -43,21 +43,24 @@ const WorkSection = () => {
 
         {/* Project cards - animate on scroll */}
         <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
+          {projects.map((project, index) => {
+            const isConfidential = project.id === "case-studies-confidential";
+            return (
             <div
               key={project.id}
               className={`transition-all duration-700 ${
                 isInView 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-8'
-              }`}
+              } ${isConfidential ? "md:col-span-2" : ""}`}
               style={{
                 transitionDelay: isInView ? `${index * 150}ms` : '0ms',
               }}
             >
               <ProjectCard project={project} />
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

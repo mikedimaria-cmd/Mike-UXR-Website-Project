@@ -1,4 +1,4 @@
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, Lock } from "lucide-react";
 import { Project } from "@/data/portfolio";
 
 interface ProjectCardProps {
@@ -53,6 +53,7 @@ const statusColors = {
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
   const styles = vibeStyles[project.vibe];
+  const isConfidential = project.id === "case-studies-confidential";
 
   return (
     <div
@@ -71,6 +72,48 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       
       {/* Grid overlay */}
       <div className="absolute inset-0 synthwave-grid opacity-10 group-hover:opacity-20 transition-opacity duration-500" />
+
+      {isConfidential && (
+        <>
+          {/* Faint lock watermark */}
+          <Lock
+            className="absolute -right-10 top-14 w-56 h-56 text-destructive/10 rotate-12 pointer-events-none"
+            aria-hidden="true"
+          />
+
+          {/* Classified scanline overlay */}
+          <div
+            className="absolute inset-0 pointer-events-none opacity-[0.22] mix-blend-screen"
+            style={{
+              background:
+                "repeating-linear-gradient(180deg, rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 1px, rgba(0,0,0,0) 3px, rgba(0,0,0,0) 6px)",
+            }}
+          />
+          {/* Subtle noise overlay */}
+          <div
+            className="absolute inset-0 pointer-events-none opacity-[0.08] mix-blend-overlay"
+            style={{
+              background:
+                "repeating-linear-gradient(135deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, rgba(0,0,0,0) 2px, rgba(0,0,0,0) 4px)",
+            }}
+          />
+          {/* Redaction bars */}
+          <div
+            className="absolute left-6 right-10 top-[46%] h-3 rounded-sm pointer-events-none opacity-70"
+            style={{
+              background:
+                "linear-gradient(90deg, rgba(10,6,18,0.55) 0%, rgba(10,6,18,0.35) 60%, rgba(10,6,18,0) 100%)",
+            }}
+          />
+          <div
+            className="absolute left-10 right-20 top-[58%] h-3 rounded-sm pointer-events-none opacity-60"
+            style={{
+              background:
+                "linear-gradient(90deg, rgba(10,6,18,0.50) 0%, rgba(10,6,18,0.30) 55%, rgba(10,6,18,0) 100%)",
+            }}
+          />
+        </>
+      )}
       
       {/* Content */}
       <div className="relative z-10">
@@ -78,7 +121,28 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
             <h3 className={`font-display text-2xl font-medium ${styles.text} ${styles.textGlow} mb-2`}>
-              {project.title}
+              {isConfidential ? (
+                <span className="relative inline-flex items-center">
+                  <span className="relative">
+                    {/* Glitch-like duplicate layers */}
+                    <span
+                      className="absolute inset-0 text-destructive/80 translate-x-[1px] -translate-y-[1px] opacity-60"
+                      aria-hidden="true"
+                    >
+                      {project.title}
+                    </span>
+                    <span
+                      className="absolute inset-0 text-amber-400/60 -translate-x-[1px] translate-y-[1px] opacity-50"
+                      aria-hidden="true"
+                    >
+                      {project.title}
+                    </span>
+                    <span className="relative">{project.title}</span>
+                  </span>
+                </span>
+              ) : (
+                project.title
+              )}
             </h3>
             <p className="text-muted-foreground text-base font-mono">
               {project.role}
@@ -87,10 +151,10 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           <span
             className={`
               px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider
-              border ${styles.badge}
+              border ${isConfidential ? "bg-destructive/15 text-destructive border-destructive/30" : styles.badge}
             `}
           >
-            {project.status}
+            {isConfidential ? "Confidential" : project.status}
           </span>
         </div>
 
@@ -102,17 +166,23 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         {/* Tech Stack */}
         <div className="mb-6">
           <p className="text-xs font-display text-secondary uppercase tracking-wider mb-2">
-            Tech Stack
+            {isConfidential ? "Clearance" : "Tech Stack"}
           </p>
           <div className="flex flex-wrap gap-2">
-            {project.techStack.map((tech, index) => (
-              <span
-                key={index}
-                className="px-2 py-1 text-xs font-mono bg-muted/50 rounded border border-border/50"
-              >
-                {tech}
+            {isConfidential ? (
+              <span className="px-2 py-1 text-xs font-mono bg-muted/50 rounded border border-border/50">
+                CLEARANCE REQUIRED
               </span>
-            ))}
+            ) : (
+              project.techStack.map((tech, index) => (
+                <span
+                  key={index}
+                  className="px-2 py-1 text-xs font-mono bg-muted/50 rounded border border-border/50"
+                >
+                  {tech}
+                </span>
+              ))
+            )}
           </div>
         </div>
 
@@ -121,15 +191,15 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           {project.link && (
             <a
               href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
+              target={isConfidential ? undefined : "_blank"}
+              rel={isConfidential ? undefined : "noopener noreferrer"}
               className={`
                 flex items-center gap-2 text-base font-medium
-                ${styles.text} group/link
+                ${isConfidential ? "text-destructive hover:text-destructive/90" : styles.text} group/link
                 transition-all duration-300
               `}
             >
-              <span>View Project</span>
+              <span>{isConfidential ? "Request Access" : "View Project"}</span>
               <ExternalLink className="w-4 h-4 transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
             </a>
           )}

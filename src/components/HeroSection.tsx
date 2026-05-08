@@ -45,8 +45,7 @@ const HeroSection = () => {
 
         <ParallaxSection speed={-0.2}>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
-            Rooted in traditional UXR methodologies, I've embraced GenAI to supercharge 
-            productivity and uncover insights with greater speed.
+            A research-oriented builder and strategist. I combine deep qualitative craft with an AI-augmented builder's mindset to move faster, go deeper, and ship insight.
           </p>
         </ParallaxSection>
 

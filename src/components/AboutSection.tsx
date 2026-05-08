@@ -24,9 +24,9 @@ const AboutSection = () => {
           </span>
           <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-8">
             I consider myself a{" "}
-            <span className="text-primary text-glow-pink">Modern</span>
+            <span className="text-primary text-glow-pink">Research-Oriented</span>
             <br />
-            <span className="text-secondary text-glow-cyan">UX Researcher</span>
+            <span className="text-secondary text-glow-cyan">Builder &amp; Strategist</span>
           </h2>
           
           <p className="text-muted-foreground text-lg leading-relaxed">
