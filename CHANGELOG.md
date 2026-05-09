@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.3] - 2026-05-09
+
+### Changed
+- Reordered homepage sections: About and Character Attributes / Arsenal earlier; Companies strip and Featured Work follow; Contact remains last
+- Align primary nav link order with section flow (About, Work, Contact, then resume and Let’s Talk)
+- Simplified About experience timeline by removing the vertical spine and decorative start marker; icons, horizontal connectors, and scroll animations unchanged
+
 ## [0.3.2] - 2026-05-08
 
 ### Changed

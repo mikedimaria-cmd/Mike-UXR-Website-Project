@@ -49,20 +49,7 @@ const ExperienceLog = ({ experiences }: ExperienceLogProps) => {
 
   return (
     <div ref={containerRef} className="relative space-y-12 md:space-y-16 pl-4 md:pl-0">
-      
-      {/* 1. The Continuous "System Line" (Background) */}
-      {/* CHANGED: Switched from rainbow gradient to a clean "Cyan Data Rail" for better contrast */}
-      <div 
-        className="absolute left-[27px] md:left-8 top-2 bottom-0 w-[2px] bg-gradient-to-b from-neon-cyan/50 via-neon-cyan/20 to-transparent shadow-[0_0_15px_rgba(0,255,255,0.3)]" 
-      />
-
-      {/* 2. Terminal Start Node (Decorative Top) */}
-      <div className="absolute left-[23px] md:left-[28px] -top-2 w-3 h-3 rounded-full bg-neon-pink shadow-[0_0_10px_var(--neon-pink)] z-10" />
-
       {items(experiences, visibleItems, vibeTextColors, vibeGlowClasses)}
-
-      {/* 3. "End of Log" Fade Out */}
-      <div className="absolute left-[27px] md:left-8 bottom-0 h-24 w-[2px] bg-gradient-to-b from-neon-cyan to-transparent z-0" />
     </div>
   );
 };

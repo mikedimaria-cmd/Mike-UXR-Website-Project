@@ -39,15 +39,15 @@ const Index = () => {
         <FloatingNav />
         <HeroSection />
         <Suspense fallback={<BelowFoldFallback />}>
-          <WorkSection />
           <AboutSection />
-          <CompanyLogoStrip />
           <section className="relative py-20 px-4">
             <div className="absolute top-0 left-1/4 w-72 h-72 bg-neon-purple/5 rounded-full blur-3xl pointer-events-none" />
             <div className="max-w-xl mx-auto relative z-10">
               <SkillsMatrix />
             </div>
           </section>
+          <CompanyLogoStrip />
+          <WorkSection />
           <ContactSection />
         </Suspense>
       </main>
