@@ -22,6 +22,17 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "case-studies-confidential",
+    title: "UX Research Case Studies",
+    description:
+      "Deep foundational and generative research across three industries. Full case studies available on request.",
+    role: "YouTube · Google Cloud · Fidelity Investments",
+    techStack: ["CLEARANCE REQUIRED"],
+    link: "mailto:mike.dimaria@gmail.com?subject=Case%20Study%20Access%20Request",
+    status: "Building",
+    vibe: "neon-purple",
+  },
+  {
     id: "gastrogaz",
     title: "GastroGaz",
     description: "An AI-enhanced health tracking application for cat owners. Leverages Gemini API to analyze food labels and track digestive health, weight, and medications.",
@@ -61,17 +72,6 @@ export const projects: Project[] = [
     link: "https://mike-dimaria.com",
     status: "Building",
     vibe: "neon-purple"
-  },
-  {
-    id: "case-studies-confidential",
-    title: "UX Research Case Studies",
-    description:
-      "Deep foundational and generative research across three industries. Full case studies available on request.",
-    role: "YouTube · Google Cloud · Fidelity Investments",
-    techStack: ["CLEARANCE REQUIRED"],
-    link: "mailto:mike.dimaria@gmail.com?subject=Case%20Study%20Access%20Request",
-    status: "Building",
-    vibe: "neon-purple",
   }
 ];
 
