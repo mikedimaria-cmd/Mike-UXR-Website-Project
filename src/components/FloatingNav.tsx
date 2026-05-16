@@ -24,7 +24,7 @@ const FloatingNav = () => {
     { label: "Contact", href: "#contact" },
   ];
 
-  const resumeHref = "/Mike_DiMaria_Resume_2025.pdf";
+  const resumeHref = "/Mike_DiMaria_Resume_2026.pdf";
 
   const handleNavClick = () => {
     setMobileOpen(false);

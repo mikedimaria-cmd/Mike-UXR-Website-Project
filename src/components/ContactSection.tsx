@@ -29,7 +29,7 @@ const ContactSection = () => {
             <span className="transform group-hover:translate-x-1 transition-transform">→</span>
           </a>
           <a
-            href="/Mike_DiMaria_Resume_2025.pdf"
+            href="/Mike_DiMaria_Resume_2026.pdf"
             className="px-10 py-5 border border-border rounded-full font-display font-bold tracking-wider text-sm hover:border-secondary hover:text-secondary hover:box-glow-cyan transition-all duration-300 whitespace-nowrap"
           >
             Download Resume
