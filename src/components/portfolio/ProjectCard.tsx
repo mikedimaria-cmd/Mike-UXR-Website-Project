@@ -1,5 +1,6 @@
 import { ExternalLink, Github, Lock } from "lucide-react";
 import { Project } from "@/data/portfolio";
+import { useTheme } from "@/theme/ThemeContext";
 
 interface ProjectCardProps {
   project: Project;
@@ -45,15 +46,13 @@ const vibeStyles = {
   },
 };
 
-const statusColors = {
-  Live: "text-green-400",
-  Beta: "text-yellow-400",
-  Building: "text-blue-400",
-};
-
 const ProjectCard = ({ project }: ProjectCardProps) => {
+  const { theme, voice } = useTheme();
   const styles = vibeStyles[project.vibe];
   const isConfidential = project.id === "case-studies-confidential";
+  // The glitch/classified treatment is part of the synthwave bit; refined
+  // themes keep the lock watermark and redaction bars but drop the noise.
+  const showGlitch = theme === "synthwave";
 
   return (
     <div
@@ -81,23 +80,27 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
             aria-hidden="true"
           />
 
-          {/* Classified scanline overlay */}
-          <div
-            className="absolute inset-0 pointer-events-none opacity-[0.22] mix-blend-screen"
-            style={{
-              background:
-                "repeating-linear-gradient(180deg, rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 1px, rgba(0,0,0,0) 3px, rgba(0,0,0,0) 6px)",
-            }}
-          />
-          {/* Subtle noise overlay */}
-          <div
-            className="absolute inset-0 pointer-events-none opacity-[0.08] mix-blend-overlay"
-            style={{
-              background:
-                "repeating-linear-gradient(135deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, rgba(0,0,0,0) 2px, rgba(0,0,0,0) 4px)",
-            }}
-          />
-          {/* Redaction bars */}
+          {showGlitch && (
+            <>
+              {/* Classified scanline overlay */}
+              <div
+                className="absolute inset-0 pointer-events-none opacity-[0.22] mix-blend-screen"
+                style={{
+                  background:
+                    "repeating-linear-gradient(180deg, rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 1px, rgba(0,0,0,0) 3px, rgba(0,0,0,0) 6px)",
+                }}
+              />
+              {/* Subtle noise overlay */}
+              <div
+                className="absolute inset-0 pointer-events-none opacity-[0.08] mix-blend-overlay"
+                style={{
+                  background:
+                    "repeating-linear-gradient(135deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, rgba(0,0,0,0) 2px, rgba(0,0,0,0) 4px)",
+                }}
+              />
+            </>
+          )}
+          {/* Redaction bars — read as redacted ink in every theme */}
           <div
             className="absolute left-6 right-10 top-[46%] h-3 rounded-sm pointer-events-none opacity-70"
             style={{
@@ -121,7 +124,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
             <h3 className={`font-display text-2xl font-medium ${styles.text} ${styles.textGlow} mb-2`}>
-              {isConfidential ? (
+              {isConfidential && showGlitch ? (
                 <span className="relative inline-flex items-center">
                   {/* Crisp base text with controlled "classified" styling */}
                   <span
@@ -169,7 +172,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
               border ${isConfidential ? "bg-destructive/15 text-destructive border-destructive/30" : styles.badge}
             `}
           >
-            {isConfidential ? "Confidential" : project.status}
+            {isConfidential ? voice.confidentialBadge : project.status}
           </span>
         </div>
 
@@ -181,12 +184,12 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         {/* Tech Stack */}
         <div className="mb-6">
           <p className="text-xs font-display text-secondary uppercase tracking-wider mb-2">
-            {isConfidential ? "Clearance" : "Tech Stack"}
+            {isConfidential ? voice.confidentialChipLabel : "Tech Stack"}
           </p>
           <div className="flex flex-wrap gap-2">
             {isConfidential ? (
               <span className="px-2 py-1 text-xs font-mono bg-muted/50 rounded border border-border/50">
-                CLEARANCE REQUIRED
+                {voice.confidentialChip}
               </span>
             ) : (
               project.techStack.map((tech, index) => (
@@ -214,7 +217,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                 transition-all duration-300
               `}
             >
-              <span>{isConfidential ? "Request Access" : "View Project"}</span>
+              <span>{isConfidential ? voice.confidentialLink : "View Project"}</span>
               <ExternalLink className="w-4 h-4 transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
             </a>
           )}

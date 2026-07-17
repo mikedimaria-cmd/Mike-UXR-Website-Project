@@ -78,10 +78,10 @@ const items = (
         {/* Left Column: Icon & Node */}
         <div className="relative flex flex-col items-center">
           {/* The Icon Bubble */}
-          <div 
+          <div
             className={cn(
-              "relative z-10 w-14 h-14 rounded-full border border-white/10 bg-background flex items-center justify-center transition-all duration-500",
-              isVisible ? "border-neon-pink/50 shadow-[0_0_15px_rgba(255,0,255,0.2)]" : "scale-90"
+              "relative z-10 w-14 h-14 rounded-full border border-foreground/10 bg-background flex items-center justify-center transition-all duration-500",
+              isVisible ? "border-neon-pink/50 shadow-[var(--node-glow)]" : "scale-90"
             )}
           >
             <Icon 
@@ -97,14 +97,14 @@ const items = (
         <div className="relative pt-2 group">
           {/* Circuit Connector Line (The "Hash Mark") */}
           {/* Connecting the icon on the left to the text on the right */}
-          <div 
+          <div
             className={cn(
-              "absolute -left-4 md:-left-8 top-9 h-[2px] bg-white/10 transition-all duration-1000 origin-left",
+              "absolute -left-4 md:-left-8 top-9 h-[2px] bg-foreground/15 transition-all duration-1000 origin-left",
               isVisible ? "w-4 md:w-8 opacity-100" : "w-0 opacity-0"
             )}
           >
             {/* Little decorative dot at the end of the connector */}
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-neon-cyan rounded-full shadow-[0_0_5px_var(--neon-cyan)]" />
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-neon-cyan rounded-full shadow-[var(--dot-glow)]" />
           </div>
 
           {/* Date & Role */}
@@ -112,7 +112,7 @@ const items = (
             <span className="font-mono text-xs text-neon-cyan/80 tracking-widest uppercase">
               {exp.period}
             </span>
-            <span className="hidden md:inline text-white/20">•</span>
+            <span className="hidden md:inline text-foreground/20">•</span>
             <h3 className="font-display text-xl font-bold text-foreground">
               {exp.role}
             </h3>
@@ -133,7 +133,7 @@ const items = (
             {exp.skills.map((skill) => (
               <span 
                 key={skill}
-                className="px-2 py-1 text-xs font-mono border border-white/5 bg-white/5 rounded text-white/60"
+                className="px-2 py-1 text-xs font-mono border border-foreground/10 bg-foreground/5 rounded text-foreground/60"
               >
                 {skill}
               </span>

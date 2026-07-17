@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import FloatingNav from "@/components/FloatingNav";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 import HeroSection from "@/components/HeroSection";
 
 const WorkSection = lazy(() => import("@/components/WorkSection"));
@@ -37,6 +38,7 @@ const Index = () => {
       >
         <ScrollProgressBar />
         <FloatingNav />
+        <ThemeSwitcher />
         <HeroSection />
         <Suspense fallback={<BelowFoldFallback />}>
           <AboutSection />

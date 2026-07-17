@@ -21,12 +21,12 @@ const ScrollProgressBar = () => {
         className="h-full transition-all duration-100 ease-out"
         style={{
           width: `${progress}%`,
-          background: `linear-gradient(90deg, 
-            hsl(320 100% 60%) 0%, 
-            hsl(280 100% 65%) 50%, 
-            hsl(185 100% 50%) 100%
+          background: `linear-gradient(90deg,
+            hsl(var(--neon-pink)) 0%,
+            hsl(var(--neon-purple)) 50%,
+            hsl(var(--neon-cyan)) 100%
           )`,
-          boxShadow: `0 0 10px hsl(320 100% 60%), 0 0 20px hsl(280 100% 65% / 0.5), 0 2px 10px hsl(320 100% 60% / 0.3)`,
+          boxShadow: "var(--progress-glow)",
         }}
       />
     </div>

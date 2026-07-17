@@ -1,4 +1,7 @@
+import { useTheme } from "@/theme/ThemeContext";
+
 const ContactSection = () => {
+  const { voice } = useTheme();
   return (
     <section id="contact" className="relative py-32 px-4 pb-16">
       {/* Background */}
@@ -10,9 +13,9 @@ const ContactSection = () => {
           Get In Touch
         </span>
         <h2 className="font-display text-4xl md:text-6xl font-medium mt-4 mb-8">
-          Let's Geek Out
+          {voice.contactHeadlineTop}
           <br />
-          <span className="gradient-chrome text-glow-pink">Together</span>
+          <span className="gradient-chrome text-glow-pink">{voice.contactHeadlineAccent}</span>
         </h2>
         
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-12 leading-relaxed">
@@ -25,7 +28,7 @@ const ContactSection = () => {
             href="mailto:mike.dimaria@gmail.com"
             className="group px-10 py-5 bg-primary text-primary-foreground rounded-full font-display font-bold tracking-wider hover:box-glow-pink transition-all duration-300 transform hover:scale-105 flex items-center gap-3"
           >
-            <span>SAY HELLO</span>
+            <span>{voice.contactCta}</span>
             <span className="transform group-hover:translate-x-1 transition-transform">→</span>
           </a>
           <a

@@ -1,31 +1,15 @@
 import { ChevronDown } from "lucide-react";
 import ParallaxSection from "./ParallaxSection";
 import SpotlightText from "./SpotlightText";
+import HeroBackdrop from "./theme/HeroBackdrop";
+import { useTheme } from "@/theme/ThemeContext";
 
 const HeroSection = () => {
+  const { voice } = useTheme();
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-      {/* Background grid with parallax */}
-      <ParallaxSection speed={0.2} className="absolute inset-0">
-        <div className="absolute inset-0 synthwave-grid opacity-20" />
-      </ParallaxSection>
-
-      {/* Animated scan line */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-neon-cyan/50 to-transparent animate-scan-line" />
-      </div>
-
-      {/* Perspective grid floor */}
-      <div className="absolute bottom-0 left-0 right-0 h-64 overflow-hidden">
-        <div
-          className="absolute inset-0 synthwave-grid animate-grid-scroll"
-          style={{
-            transform: "perspective(500px) rotateX(60deg)",
-            transformOrigin: "center top",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
-      </div>
+      {/* Theme-specific scenery (grid/scan line/floor, ridgeline, etc.) */}
+      <HeroBackdrop />
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
@@ -55,13 +39,13 @@ const HeroSection = () => {
               href="#work"
               className="px-8 py-4 bg-primary text-primary-foreground rounded-full font-display font-bold text-sm tracking-wider hover:box-glow-pink transition-all duration-300 transform hover:scale-105"
             >
-              VIEW MY WORK
+              {voice.heroCtaWork}
             </a>
             <a
               href="#about"
               className="px-8 py-4 border border-secondary text-secondary rounded-full font-display font-bold text-sm tracking-wider hover:bg-secondary hover:text-secondary-foreground hover:box-glow-cyan transition-all duration-300"
             >
-              ABOUT ME
+              {voice.heroCtaAbout}
             </a>
           </div>
         </ParallaxSection>

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useTheme } from "@/theme/ThemeContext";
 
 // The "Character Sheet" stats - blending UXR expertise with Builder skills
 const attributes = [
@@ -24,6 +25,7 @@ const arsenal = [
 ];
 
 const SkillsMatrix = () => {
+  const { voice } = useTheme();
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -56,7 +58,7 @@ const SkillsMatrix = () => {
       <div className="flex items-center gap-3 mb-8">
         <span className="w-2 h-2 rounded-full bg-neon-pink animate-pulse" />
         <h3 className="font-display text-xl font-bold tracking-wider text-foreground uppercase">
-          Character Attributes
+          {voice.skillsHeader}
         </h3>
       </div>
 
@@ -79,7 +81,7 @@ const SkillsMatrix = () => {
             </div>
             
             {/* Bar Container */}
-            <div className="h-2 bg-muted/50 rounded-full overflow-hidden backdrop-blur-sm border border-white/5">
+            <div className="h-2 bg-muted/50 rounded-full overflow-hidden backdrop-blur-sm border border-foreground/10">
               {/* Animated Fill Bar */}
               <div
                 className="h-full rounded-full transition-all duration-1000 ease-out relative"
@@ -90,9 +92,7 @@ const SkillsMatrix = () => {
                     hsl(var(--neon-purple)) 0%, 
                     hsl(var(--neon-cyan)) 100%
                   )`,
-                  boxShadow: isVisible
-                    ? `0 0 15px hsl(var(--neon-cyan) / 0.5)`
-                    : "none",
+                  boxShadow: isVisible ? "var(--bar-glow)" : "none",
                 }}
               >
                 {/* Subtle shine effect on top of the bar */}
@@ -109,7 +109,7 @@ const SkillsMatrix = () => {
       {/* The Arsenal (Tools) */}
       <div>
         <h4 className="font-display text-sm text-muted-foreground mb-4 uppercase tracking-widest">
-          The Arsenal
+          {voice.toolsHeader}
         </h4>
         <div className="flex flex-wrap gap-2">
           {arsenal.map((tool, index) => (
@@ -117,7 +117,7 @@ const SkillsMatrix = () => {
               key={tool}
               className={`
                 px-3 py-1.5 text-xs md:text-sm font-medium font-body
-                border border-white/10 bg-white/5 text-foreground/80 rounded-md
+                border border-foreground/10 bg-foreground/5 text-foreground/80 rounded-md
                 hover:border-neon-pink/50 hover:text-neon-pink hover:bg-neon-pink/10
                 transition-all duration-300 cursor-default
                 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}

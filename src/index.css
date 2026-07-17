@@ -38,6 +38,24 @@
 
     --radius: 0.5rem;
 
+    /* Theme-driven typography (see [data-theme] blocks below) */
+    --font-display: "Space Grotesk", sans-serif;
+    --font-body: "Inter", sans-serif;
+
+    /* Card gradient endpoint (was hardcoded in .card-synthwave) */
+    --card-2: 260 25% 12%;
+
+    /* Theme-tunable effect intensities — refined themes zero these out */
+    --progress-glow: 0 0 10px hsl(var(--neon-pink)), 0 0 20px hsl(var(--neon-purple) / 0.5);
+    --bar-glow: 0 0 15px hsl(var(--neon-cyan) / 0.5);
+    --node-glow: 0 0 15px hsl(var(--neon-pink) / 0.25);
+    --dot-glow: 0 0 5px hsl(var(--neon-cyan));
+
+    /* Project status colors (dark themes: bright; light themes override darker) */
+    --status-live: 142 71% 65%;
+    --status-beta: 48 96% 63%;
+    --status-building: 213 94% 68%;
+
     /* Synthwave Custom Colors */
     --neon-pink: 320 100% 60%;
     --neon-cyan: 185 100% 50%;
@@ -264,7 +282,7 @@
     background: linear-gradient(
       135deg,
       hsl(var(--card)) 0%,
-      hsl(260 25% 12%) 100%
+      hsl(var(--card-2)) 100%
     );
     border: 1px solid hsl(var(--neon-pink) / 0.2);
     transition: all 0.3s ease;
@@ -309,4 +327,282 @@
   .animate-blink {
     animation: blink 1s infinite;
   }
+}
+
+/* ============================================================
+   THEMES
+   Each [data-theme] block remaps the palette (including the
+   --neon-* roles, which most components consume) plus fonts and
+   effect intensities. Kept outside @layer so these override the
+   component/utility classes above on specificity ties.
+   Theme ids must match src/theme/themes.ts and index.html.
+   ============================================================ */
+
+/* ---------- Cascadia — dark forest, glacier light ---------- */
+[data-theme="cascadia"] {
+  --background: 155 30% 8%;
+  --foreground: 150 20% 93%;
+  --card: 155 26% 10%;
+  --card-2: 155 22% 13%;
+  --card-foreground: 150 20% 93%;
+  --popover: 155 26% 10%;
+  --popover-foreground: 150 20% 93%;
+  --primary: 190 55% 63%;
+  --primary-foreground: 155 30% 8%;
+  --secondary: 140 30% 62%;
+  --secondary-foreground: 155 30% 8%;
+  --muted: 155 16% 16%;
+  --muted-foreground: 150 12% 65%;
+  --accent: 22 55% 55%;
+  --accent-foreground: 155 30% 8%;
+  --destructive: 4 55% 50%;
+  --destructive-foreground: 150 20% 95%;
+  --border: 155 20% 20%;
+  --input: 155 20% 20%;
+  --ring: 190 55% 63%;
+
+  /* Role remaps: glacier takes pink's role, moss takes cyan's, cedar purple's */
+  --neon-pink: 190 55% 63%;
+  --neon-cyan: 140 30% 62%;
+  --neon-purple: 22 55% 55%;
+  --neon-blue: 200 50% 55%;
+  --sunset-orange: 22 55% 55%;
+  --sunset-yellow: 40 45% 60%;
+  --grid-color: 150 25% 45%;
+  --glow-pink: 190 55% 63%;
+  --glow-cyan: 140 30% 62%;
+
+  --font-display: "Archivo", "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  /* Softer, mistier glows */
+  --progress-glow: 0 0 10px hsl(var(--neon-pink) / 0.5);
+  --bar-glow: 0 0 12px hsl(var(--neon-cyan) / 0.35);
+  --node-glow: 0 0 12px hsl(var(--neon-pink) / 0.2);
+  --dot-glow: 0 0 4px hsl(var(--neon-cyan) / 0.8);
+
+  --status-live: 140 40% 65%;
+  --status-beta: 40 50% 62%;
+  --status-building: 200 50% 65%;
+}
+
+[data-theme="cascadia"] :is(h1, h2, h3, h4, h5, h6, .font-display) {
+  font-stretch: 125%;
+}
+
+/* Topographic contour field replaces the neon grid */
+[data-theme="cascadia"] .synthwave-grid {
+  background-image:
+    repeating-radial-gradient(
+      circle at 22% 28%,
+      transparent 0,
+      transparent 44px,
+      hsl(var(--grid-color) / 0.35) 45px,
+      transparent 46px
+    ),
+    repeating-radial-gradient(
+      circle at 76% 68%,
+      transparent 0,
+      transparent 62px,
+      hsl(var(--grid-color) / 0.25) 63px,
+      transparent 64px
+    );
+  background-size: auto;
+}
+
+[data-theme="cascadia"] .gradient-chrome {
+  filter: brightness(1.05) saturate(1.05);
+  text-shadow: none;
+}
+
+/* ---------- Gallery — ink on warm paper ---------- */
+[data-theme="gallery"] {
+  --background: 40 50% 96%;
+  --foreground: 30 15% 10%;
+  --card: 42 45% 98%;
+  --card-2: 40 40% 93%;
+  --card-foreground: 30 15% 10%;
+  --popover: 42 45% 98%;
+  --popover-foreground: 30 15% 10%;
+  --primary: 30 15% 12%;
+  --primary-foreground: 40 50% 96%;
+  --secondary: 30 45% 40%;
+  --secondary-foreground: 40 50% 97%;
+  --muted: 40 28% 90%;
+  --muted-foreground: 30 10% 38%;
+  --accent: 4 48% 33%;
+  --accent-foreground: 40 50% 96%;
+  --destructive: 4 48% 33%;
+  --destructive-foreground: 40 50% 96%;
+  --border: 38 25% 82%;
+  --input: 38 25% 82%;
+  --ring: 30 45% 40%;
+
+  /* Role remaps: oxblood, bronze, slate blue */
+  --neon-pink: 4 48% 33%;
+  --neon-cyan: 30 45% 38%;
+  --neon-purple: 210 25% 32%;
+  --neon-blue: 210 30% 38%;
+  --sunset-orange: 25 55% 45%;
+  --sunset-yellow: 42 60% 50%;
+  --grid-color: 38 25% 82%;
+  --glow-pink: 4 48% 33%;
+  --glow-cyan: 30 45% 38%;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Newsreader", Georgia, serif;
+
+  --progress-glow: none;
+  --bar-glow: none;
+  --node-glow: 0 0 rgba(0, 0, 0, 0);
+  --dot-glow: 0 0 rgba(0, 0, 0, 0);
+
+  --status-live: 140 45% 30%;
+  --status-beta: 40 70% 35%;
+  --status-building: 210 45% 38%;
+}
+
+[data-theme="gallery"] :is(.text-glow-pink, .text-glow-cyan, .text-glow-purple) {
+  text-shadow: none;
+}
+
+[data-theme="gallery"]
+  :is(.box-glow-pink, .box-glow-cyan, .hover\:box-glow-pink:hover, .hover\:box-glow-cyan:hover) {
+  box-shadow: none;
+}
+
+[data-theme="gallery"] .synthwave-grid {
+  background-image: none;
+}
+
+[data-theme="gallery"] .gradient-chrome {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--foreground)) 0%,
+    hsl(var(--secondary)) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: none;
+  text-shadow: none;
+}
+
+[data-theme="gallery"] .spotlight-text-base {
+  filter: none;
+}
+
+[data-theme="gallery"] .nav-glass {
+  background: hsl(var(--background) / 0.82);
+  border: 1px solid hsl(var(--border));
+  box-shadow: 0 8px 30px hsl(30 15% 10% / 0.08);
+}
+
+[data-theme="gallery"] .card-synthwave {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+}
+
+[data-theme="gallery"] .card-synthwave:hover {
+  border-color: hsl(var(--secondary) / 0.5);
+  box-shadow: 0 12px 30px hsl(30 15% 10% / 0.08);
+}
+
+/* ---------- Swiss Studio — white, black, one red ---------- */
+[data-theme="swiss"] {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 7%;
+  --card: 0 0% 100%;
+  --card-2: 0 0% 98%;
+  --card-foreground: 0 0% 7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 7%;
+  --primary: 4 78% 51%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 7%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 38%;
+  --accent: 4 78% 51%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 4 78% 45%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 87%;
+  --input: 0 0% 87%;
+  --ring: 4 78% 51%;
+
+  /* Role remaps: red carries emphasis; everything else goes grayscale */
+  --neon-pink: 4 78% 51%;
+  --neon-cyan: 0 0% 7%;
+  --neon-purple: 0 0% 30%;
+  --neon-blue: 0 0% 30%;
+  --sunset-orange: 4 78% 51%;
+  --sunset-yellow: 40 90% 45%;
+  --grid-color: 0 0% 60%;
+  --glow-pink: 4 78% 51%;
+  --glow-cyan: 0 0% 7%;
+
+  --font-display: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --progress-glow: none;
+  --bar-glow: none;
+  --node-glow: 0 0 rgba(0, 0, 0, 0);
+  --dot-glow: 0 0 rgba(0, 0, 0, 0);
+
+  --status-live: 140 60% 30%;
+  --status-beta: 40 90% 35%;
+  --status-building: 0 0% 35%;
+}
+
+[data-theme="swiss"] :is(h1, h2, h3, h4, h5, h6, .font-display) {
+  letter-spacing: -0.02em;
+}
+
+[data-theme="swiss"] :is(.text-glow-pink, .text-glow-cyan, .text-glow-purple) {
+  text-shadow: none;
+}
+
+[data-theme="swiss"]
+  :is(.box-glow-pink, .box-glow-cyan, .hover\:box-glow-pink:hover, .hover\:box-glow-cyan:hover) {
+  box-shadow: none;
+}
+
+/* Exposed column grid instead of neon squares */
+[data-theme="swiss"] .synthwave-grid {
+  background-image: linear-gradient(
+    90deg,
+    hsl(var(--grid-color) / 0.25) 1px,
+    transparent 1px
+  );
+  background-size: 120px 100%;
+}
+
+[data-theme="swiss"] .gradient-chrome {
+  background: linear-gradient(hsl(var(--primary)), hsl(var(--primary)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: none;
+  text-shadow: none;
+}
+
+[data-theme="swiss"] .spotlight-text-base {
+  filter: none;
+}
+
+[data-theme="swiss"] .nav-glass {
+  background: hsl(var(--background) / 0.85);
+  border: 1px solid hsl(var(--border));
+  box-shadow: 0 6px 24px hsl(0 0% 0% / 0.06);
+}
+
+[data-theme="swiss"] .card-synthwave {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--foreground) / 0.15);
+}
+
+[data-theme="swiss"] .card-synthwave:hover {
+  border-color: hsl(var(--foreground));
+  box-shadow: none;
 }

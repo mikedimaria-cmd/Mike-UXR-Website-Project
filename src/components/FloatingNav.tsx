@@ -5,8 +5,10 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { useTheme } from "@/theme/ThemeContext";
 
 const FloatingNav = () => {
+  const { voice } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -48,7 +50,7 @@ const FloatingNav = () => {
             scrolled ? "text-sm px-3 py-2" : "text-base px-4 py-2"
           }`}
         >
-          <span className="gradient-chrome">MIKE_DIMARIA</span>
+          <span className="gradient-chrome whitespace-nowrap">{voice.brand}</span>
         </a>
         
         {/* Spacer that shrinks on scroll */}
@@ -98,7 +100,7 @@ const FloatingNav = () => {
           href="#main-content"
           className="font-display font-bold text-sm px-2 py-1"
         >
-          <span className="gradient-chrome">MIKE_DIMARIA</span>
+          <span className="gradient-chrome whitespace-nowrap">{voice.brand}</span>
         </a>
         
         <div className="w-px h-6 bg-primary/30" />

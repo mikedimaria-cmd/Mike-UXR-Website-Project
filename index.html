@@ -8,7 +8,40 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    
+
+    <!-- Theme bootstrap: pick the theme BEFORE first paint to avoid a flash
+         of the wrong theme. Random on each visit until the visitor explicitly
+         picks one in the switcher (which persists to localStorage).
+         Theme ids and font URLs mirror src/theme/themes.ts — keep in sync. -->
+    <script>
+      (function () {
+        var themes = ["synthwave", "cascadia", "gallery", "swiss"];
+        var fonts = {
+          cascadia:
+            "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,500;125,700;125,800&display=swap",
+          gallery:
+            "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap",
+        };
+        var theme = null;
+        try {
+          theme = localStorage.getItem("md-theme");
+        } catch (e) {
+          /* storage unavailable — fall through to random */
+        }
+        if (themes.indexOf(theme) === -1) {
+          theme = themes[Math.floor(Math.random() * themes.length)];
+        }
+        document.documentElement.setAttribute("data-theme", theme);
+        if (fonts[theme]) {
+          var link = document.createElement("link");
+          link.id = "theme-fonts-" + theme;
+          link.rel = "stylesheet";
+          link.href = fonts[theme];
+          document.head.appendChild(link);
+        }
+      })();
+    </script>
+
     <!-- Favicon: custom SVG (neon "MD" monogram on dark grid) — see /public/favicon.svg -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     
