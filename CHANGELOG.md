@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] - 2026-07-18
+
+### Added
+- Multi-theme system with five themes, each representing a personal interest: Synthwave '84 (retrofuturism), Cascadia (nature and mountains), Gallery (art and design), Press Start (gaming), and Deep Field (space)
+- Theme switcher: swatch button top-right opening a popover with palette previews, taglines, and a non-persisting "Surprise me" shuffle
+- Random theme on each visit until the visitor explicitly picks one (persisted in localStorage); theme applies before first paint to avoid flashes
+- Per-theme voice layer: labels, headers, CTAs, and the confidential card's copy shift register with the theme (substance unchanged)
+- Per-theme fonts, lazy-loaded per active theme: Archivo Expanded (Cascadia), Fraunces + Newsreader (Gallery), Pixelify Sans + Press Start 2P (Press Start), Raleway thin (Deep Field)
+- Theme-specific hero backdrops: topographic contours and mountain ridgeline (Cascadia), gallery light wash (Gallery), checkerboard dither with pixel stars (Press Start), starfield with nebula washes (Deep Field)
+- Theme-aware portraits: each theme shows its own generated portrait, optimized for the web
+- Press Start signature component: skill bars render as ten segmented HP blocks
+- Deep Field signature component: experience timeline drawn as a constellation of connected stars
+- Per-theme favicons: the MD monogram restyled for each theme, swapped pre-paint and on live theme change
+
+### Changed
+- Restrained color usage sitewide: color now encodes function (action, label, status) instead of per-card and per-timeline-item identity colors; the confidential card's red is the one deliberate exception
+- Confidential case-studies card: removed lock watermark and redaction bars in all themes; glitch/scanline treatment is now synthwave-only
+- Lucide icon stroke weights tuned per theme (delicate in Gallery/Deep Field, sturdier in Cascadia, square-capped chunky in Press Start)
+
 ## [0.3.6] - 2026-05-16
 
 ### Changed
