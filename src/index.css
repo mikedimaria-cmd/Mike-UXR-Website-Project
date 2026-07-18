@@ -375,11 +375,11 @@
   --font-display: "Archivo", "Inter", sans-serif;
   --font-body: "Inter", sans-serif;
 
-  /* Softer, mistier glows */
-  --progress-glow: 0 0 10px hsl(var(--neon-pink) / 0.5);
-  --bar-glow: 0 0 12px hsl(var(--neon-cyan) / 0.35);
-  --node-glow: 0 0 12px hsl(var(--neon-pink) / 0.2);
-  --dot-glow: 0 0 4px hsl(var(--neon-cyan) / 0.8);
+  /* Matte — no glow in the forest */
+  --progress-glow: none;
+  --bar-glow: none;
+  --node-glow: 0 0 rgba(0, 0, 0, 0);
+  --dot-glow: 0 0 rgba(0, 0, 0, 0);
 
   --status-live: 140 40% 65%;
   --status-beta: 40 50% 62%;
@@ -388,6 +388,15 @@
 
 [data-theme="cascadia"] :is(h1, h2, h3, h4, h5, h6, .font-display) {
   font-stretch: 125%;
+}
+
+[data-theme="cascadia"] :is(.text-glow-pink, .text-glow-cyan, .text-glow-purple) {
+  text-shadow: none;
+}
+
+[data-theme="cascadia"]
+  :is(.box-glow-pink, .box-glow-cyan, .hover\:box-glow-pink:hover, .hover\:box-glow-cyan:hover) {
+  box-shadow: none;
 }
 
 /* Topographic contour field replaces the neon grid */
