@@ -517,78 +517,110 @@
   box-shadow: 0 12px 30px hsl(30 15% 10% / 0.08);
 }
 
-/* ---------- Swiss Studio — white, black, one red ---------- */
-[data-theme="swiss"] {
-  --background: 0 0% 100%;
-  --foreground: 0 0% 7%;
-  --card: 0 0% 100%;
-  --card-2: 0 0% 98%;
-  --card-foreground: 0 0% 7%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 7%;
-  --primary: 4 78% 51%;
+/* ---------- Press Start — console-era pixels ---------- */
+[data-theme="pixel"] {
+  --background: 233 15% 10%;
+  --foreground: 233 30% 93%;
+  --card: 233 15% 13%;
+  --card-2: 233 14% 16%;
+  --card-foreground: 233 30% 93%;
+  --popover: 233 15% 13%;
+  --popover-foreground: 233 30% 93%;
+  --primary: 1 78% 58%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 0 0% 7%;
-  --secondary-foreground: 0 0% 100%;
-  --muted: 0 0% 96%;
-  --muted-foreground: 0 0% 38%;
-  --accent: 4 78% 51%;
-  --accent-foreground: 0 0% 100%;
-  --destructive: 4 78% 45%;
+  --secondary: 196 78% 61%;
+  --secondary-foreground: 233 15% 10%;
+  --muted: 233 12% 18%;
+  --muted-foreground: 230 18% 66%;
+  --accent: 46 100% 62%;
+  --accent-foreground: 233 15% 10%;
+  --destructive: 1 78% 52%;
   --destructive-foreground: 0 0% 100%;
-  --border: 0 0% 87%;
-  --input: 0 0% 87%;
-  --ring: 4 78% 51%;
+  --border: 233 12% 24%;
+  --input: 233 12% 24%;
+  --ring: 1 78% 58%;
 
-  /* Role remaps: red carries emphasis; everything else goes grayscale */
-  --neon-pink: 4 78% 51%;
-  --neon-cyan: 0 0% 7%;
-  --neon-purple: 0 0% 30%;
-  --neon-blue: 0 0% 30%;
-  --sunset-orange: 4 78% 51%;
-  --sunset-yellow: 40 90% 45%;
-  --grid-color: 0 0% 60%;
-  --glow-pink: 4 78% 51%;
-  --glow-cyan: 0 0% 7%;
+  /* Role remaps: P1 red, sky blue, coin gold, 1-up green */
+  --neon-pink: 1 78% 58%;
+  --neon-cyan: 196 78% 61%;
+  --neon-purple: 46 100% 62%;
+  --neon-blue: 128 48% 61%;
+  --sunset-orange: 25 90% 60%;
+  --sunset-yellow: 46 100% 62%;
+  --grid-color: 233 12% 40%;
+  --glow-pink: 1 78% 58%;
+  --glow-cyan: 196 78% 61%;
 
-  --font-display: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: "Pixelify Sans", "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
 
   --progress-glow: none;
   --bar-glow: none;
   --node-glow: 0 0 rgba(0, 0, 0, 0);
   --dot-glow: 0 0 rgba(0, 0, 0, 0);
 
-  --status-live: 140 60% 30%;
-  --status-beta: 40 90% 35%;
-  --status-building: 0 0% 35%;
+  --status-live: 128 48% 61%;
+  --status-beta: 46 90% 58%;
+  --status-building: 196 78% 61%;
 }
 
-[data-theme="swiss"] :is(h1, h2, h3, h4, h5, h6, .font-display) {
-  letter-spacing: -0.02em;
+/* Micro-labels (eyebrows, small display text) get the true 8-bit font.
+   Nav brand excluded so it doesn't flip fonts when the nav shrinks on scroll. */
+[data-theme="pixel"]
+  :is(.text-sm.font-display, .text-xs.font-display):not(:has(.gradient-chrome)) {
+  font-family: "Press Start 2P", "Pixelify Sans", monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  line-height: 1.8;
 }
 
-[data-theme="swiss"] :is(.text-glow-pink, .text-glow-cyan, .text-glow-purple) {
+[data-theme="pixel"] :is(.text-glow-pink, .text-glow-cyan, .text-glow-purple) {
   text-shadow: none;
 }
 
-[data-theme="swiss"]
+[data-theme="pixel"]
   :is(.box-glow-pink, .box-glow-cyan, .hover\:box-glow-pink:hover, .hover\:box-glow-cyan:hover) {
   box-shadow: none;
 }
 
-/* Exposed column grid instead of neon squares */
-[data-theme="swiss"] .synthwave-grid {
-  background-image: linear-gradient(
-    90deg,
-    hsl(var(--grid-color) / 0.25) 1px,
-    transparent 1px
-  );
-  background-size: 120px 100%;
+/* Square the pills and cards — pixels don't do circles */
+[data-theme="pixel"] .rounded-full {
+  border-radius: 2px;
 }
 
-[data-theme="swiss"] .gradient-chrome {
-  background: linear-gradient(hsl(var(--primary)), hsl(var(--primary)));
+[data-theme="pixel"] .rounded-2xl {
+  border-radius: 4px;
+}
+
+/* Subtle checkerboard dither instead of neon grid */
+[data-theme="pixel"] .synthwave-grid {
+  background-image:
+    linear-gradient(
+      45deg,
+      hsl(var(--grid-color) / 0.15) 25%,
+      transparent 25%,
+      transparent 75%,
+      hsl(var(--grid-color) / 0.15) 75%
+    ),
+    linear-gradient(
+      45deg,
+      hsl(var(--grid-color) / 0.15) 25%,
+      transparent 25%,
+      transparent 75%,
+      hsl(var(--grid-color) / 0.15) 75%
+    );
+  background-size: 24px 24px;
+  background-position:
+    0 0,
+    12px 12px;
+}
+
+[data-theme="pixel"] .gradient-chrome {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--primary)) 0%,
+    hsl(var(--accent)) 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -596,22 +628,138 @@
   text-shadow: none;
 }
 
-[data-theme="swiss"] .spotlight-text-base {
+[data-theme="pixel"] .spotlight-text-base {
   filter: none;
 }
 
-[data-theme="swiss"] .nav-glass {
-  background: hsl(var(--background) / 0.85);
-  border: 1px solid hsl(var(--border));
-  box-shadow: 0 6px 24px hsl(0 0% 0% / 0.06);
+[data-theme="pixel"] .nav-glass {
+  background: hsl(var(--background) / 0.88);
+  border: 2px solid hsl(var(--border));
+  box-shadow: none;
 }
 
-[data-theme="swiss"] .card-synthwave {
+[data-theme="pixel"] .card-synthwave {
   background: hsl(var(--card));
-  border: 1px solid hsl(var(--foreground) / 0.15);
+  border: 1px solid hsl(var(--border));
 }
 
-[data-theme="swiss"] .card-synthwave:hover {
-  border-color: hsl(var(--foreground));
+[data-theme="pixel"] .card-synthwave:hover {
+  border-color: hsl(var(--secondary) / 0.6);
+  box-shadow: none;
+}
+
+/* ---------- Deep Field — the quiet vastness ---------- */
+[data-theme="deepfield"] {
+  --background: 220 48% 5%;
+  --foreground: 223 60% 95%;
+  --card: 221 40% 8%;
+  --card-2: 220 35% 11%;
+  --card-foreground: 223 60% 95%;
+  --popover: 221 40% 8%;
+  --popover-foreground: 223 60% 95%;
+  --primary: 199 90% 74%;
+  --primary-foreground: 220 48% 6%;
+  --secondary: 255 85% 76%;
+  --secondary-foreground: 220 48% 6%;
+  --muted: 220 30% 14%;
+  --muted-foreground: 222 20% 62%;
+  --accent: 38 70% 74%;
+  --accent-foreground: 220 48% 6%;
+  --destructive: 4 60% 55%;
+  --destructive-foreground: 223 60% 96%;
+  --border: 220 30% 18%;
+  --input: 220 30% 18%;
+  --ring: 199 90% 74%;
+
+  /* Role remaps: comet cyan, nebula violet, star gold */
+  --neon-pink: 199 90% 74%;
+  --neon-cyan: 255 85% 76%;
+  --neon-purple: 38 70% 74%;
+  --neon-blue: 210 80% 70%;
+  --sunset-orange: 38 70% 64%;
+  --sunset-yellow: 45 75% 72%;
+  --grid-color: 220 40% 50%;
+  --glow-pink: 199 90% 74%;
+  --glow-cyan: 255 85% 76%;
+
+  --font-display: "Raleway", "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --progress-glow: none;
+  --bar-glow: none;
+  --node-glow: 0 0 rgba(0, 0, 0, 0);
+  --dot-glow: 0 0 rgba(0, 0, 0, 0);
+
+  --status-live: 145 50% 65%;
+  --status-beta: 45 75% 68%;
+  --status-building: 199 90% 74%;
+}
+
+/* Thin, wide, unhurried type */
+[data-theme="deepfield"] :is(h1, h2) {
+  font-weight: 200;
+  letter-spacing: 0.04em;
+}
+
+[data-theme="deepfield"] :is(h3, h4, h5, h6, .font-display) {
+  font-weight: 300;
+}
+
+[data-theme="deepfield"] :is(.text-glow-pink, .text-glow-cyan, .text-glow-purple) {
+  text-shadow: none;
+}
+
+[data-theme="deepfield"]
+  :is(.box-glow-pink, .box-glow-cyan, .hover\:box-glow-pink:hover, .hover\:box-glow-cyan:hover) {
+  box-shadow: none;
+}
+
+/* Starfield instead of grid — layered pinprick dots at offset scales */
+[data-theme="deepfield"] .synthwave-grid {
+  background-image:
+    radial-gradient(1px 1px at 25% 15%, hsl(0 0% 100% / 0.9), transparent 100%),
+    radial-gradient(1px 1px at 70% 40%, hsl(0 0% 100% / 0.55), transparent 100%),
+    radial-gradient(1.5px 1.5px at 45% 72%, hsl(199 90% 80% / 0.8), transparent 100%),
+    radial-gradient(1px 1px at 88% 82%, hsl(0 0% 100% / 0.5), transparent 100%),
+    radial-gradient(1px 1px at 10% 55%, hsl(255 85% 80% / 0.6), transparent 100%),
+    radial-gradient(1.5px 1.5px at 60% 6%, hsl(0 0% 100% / 0.7), transparent 100%);
+  background-size:
+    180px 180px,
+    220px 220px,
+    260px 260px,
+    200px 200px,
+    240px 240px,
+    300px 300px;
+}
+
+[data-theme="deepfield"] .gradient-chrome {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--primary)) 0%,
+    hsl(var(--secondary)) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: none;
+  text-shadow: none;
+}
+
+[data-theme="deepfield"] .spotlight-text-base {
+  filter: none;
+}
+
+[data-theme="deepfield"] .nav-glass {
+  background: hsl(var(--background) / 0.72);
+  border: 1px solid hsl(var(--border));
+  box-shadow: none;
+}
+
+[data-theme="deepfield"] .card-synthwave {
+  border: 1px solid hsl(var(--border));
+}
+
+[data-theme="deepfield"] .card-synthwave:hover {
+  border-color: hsl(var(--primary) / 0.4);
   box-shadow: none;
 }

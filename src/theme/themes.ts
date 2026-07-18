@@ -2,7 +2,12 @@
 // NOTE: the inline pre-paint script in index.html mirrors the theme ids and
 // font URLs below. If you add or rename a theme, update index.html too.
 
-export type ThemeId = "synthwave" | "cascadia" | "gallery" | "swiss";
+export type ThemeId =
+  | "synthwave"
+  | "cascadia"
+  | "gallery"
+  | "pixel"
+  | "deepfield";
 
 export interface ThemeDef {
   id: ThemeId;
@@ -40,10 +45,20 @@ export const themes: ThemeDef[] = [
       "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap",
   },
   {
-    id: "swiss",
-    name: "Swiss Studio",
-    tagline: "Stark grid. One red. Nothing extra.",
-    swatches: ["#111111", "#E63329", "#E5E5E5", "#FFFFFF"],
+    id: "pixel",
+    name: "Press Start",
+    tagline: "Console-era color. Pixel-perfect labels.",
+    swatches: ["#E8433F", "#4FC1E9", "#FFD23F", "#16161E"],
+    fontsHref:
+      "https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600&family=Press+Start+2P&display=swap",
+  },
+  {
+    id: "deepfield",
+    name: "Deep Field",
+    tagline: "Point at nothing. Discover everything.",
+    swatches: ["#7DD3FC", "#A78BFA", "#F0C987", "#070B14"],
+    fontsHref:
+      "https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400&display=swap",
   },
 ];
 

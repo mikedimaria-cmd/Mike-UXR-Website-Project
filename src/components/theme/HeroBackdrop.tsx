@@ -72,14 +72,52 @@ const GalleryBackdrop = () => (
   </>
 );
 
-const SwissBackdrop = () => (
+// Scattered 8-bit "stars" — a handful of colored squares at varying depths
+const PIXEL_STARS = [
+  { top: "12%", left: "8%", size: 6, color: "bg-primary/60" },
+  { top: "22%", left: "85%", size: 8, color: "bg-secondary/50" },
+  { top: "35%", left: "16%", size: 4, color: "bg-accent/60" },
+  { top: "15%", left: "55%", size: 4, color: "bg-foreground/30" },
+  { top: "58%", left: "90%", size: 6, color: "bg-accent/40" },
+  { top: "70%", left: "6%", size: 8, color: "bg-secondary/40" },
+  { top: "78%", left: "72%", size: 4, color: "bg-primary/40" },
+  { top: "48%", left: "78%", size: 4, color: "bg-foreground/20" },
+];
+
+const PixelBackdrop = () => (
   <>
-    {/* Exposed column grid (themed .synthwave-grid) */}
-    <div className="absolute inset-0 synthwave-grid opacity-50 pointer-events-none" />
-    {/* The one red element — classic International Style poster geometry */}
-    <ParallaxSection speed={0.15} className="absolute top-[16%] right-[8%] md:right-[14%] pointer-events-none">
-      <div className="w-28 h-28 md:w-48 md:h-48 rounded-full bg-primary/90" />
+    {/* Checkerboard dither (themed .synthwave-grid) */}
+    <div className="absolute inset-0 synthwave-grid opacity-40 pointer-events-none" />
+    {/* Floating pixel stars */}
+    <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+      {PIXEL_STARS.map((star, i) => (
+        <span
+          key={i}
+          className={`absolute ${star.color}`}
+          style={{ top: star.top, left: star.left, width: star.size, height: star.size }}
+        />
+      ))}
+    </div>
+    {/* Bottom "ground" strip, level-select style */}
+    <div className="absolute bottom-0 left-0 right-0 pointer-events-none" aria-hidden="true">
+      <div className="h-2 bg-secondary/20" />
+      <div className="h-3 bg-muted/60" />
+      <div className="h-6 bg-card" />
+    </div>
+  </>
+);
+
+const DeepFieldBackdrop = () => (
+  <>
+    {/* Starfield (themed .synthwave-grid) with slow parallax */}
+    <ParallaxSection speed={0.1} className="absolute inset-0">
+      <div className="absolute inset-0 synthwave-grid opacity-70" />
     </ParallaxSection>
+    {/* Nebula washes */}
+    <div className="absolute top-1/4 -left-20 w-96 h-96 bg-secondary/[0.06] rounded-full blur-3xl pointer-events-none" />
+    <div className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-primary/[0.05] rounded-full blur-3xl pointer-events-none" />
+    {/* Faint horizon line low in the frame, like an observatory shot */}
+    <div className="absolute bottom-24 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent pointer-events-none" />
   </>
 );
 
@@ -90,8 +128,10 @@ const HeroBackdrop = () => {
       return <CascadiaBackdrop />;
     case "gallery":
       return <GalleryBackdrop />;
-    case "swiss":
-      return <SwissBackdrop />;
+    case "pixel":
+      return <PixelBackdrop />;
+    case "deepfield":
+      return <DeepFieldBackdrop />;
     default:
       return <SynthwaveBackdrop />;
   }
