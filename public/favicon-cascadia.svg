@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Cascadia: MD monogram over layered ridgelines on deep spruce -->
+  <rect width="64" height="64" fill="#0F1B16" rx="8"/>
+
+  <!-- Far ridge -->
+  <path d="M0 46 L10 38 L18 44 L28 34 L38 43 L48 36 L56 42 L64 38 L64 64 L0 64 Z" fill="#22392C" opacity="0.7"/>
+  <!-- Near ridge -->
+  <path d="M0 53 L12 47 L24 52 L36 45 L50 52 L64 47 L64 64 L0 64 Z" fill="#1A2C22"/>
+
+  <!-- MD letters: glacier M, moss D -->
+  <path d="M 12 20 L 12 44 L 18 44 L 18 32 L 20 32 L 20 44 L 26 44 L 26 20 L 20 20 L 20 28 L 18 28 L 18 20 Z"
+        fill="#6FC3D4"/>
+  <path d="M 32 20 L 32 44 L 42 44 Q 48 44 48 32 Q 48 20 42 20 Z M 38 20 Q 44 20 44 32 Q 44 44 38 44 L 38 20 Z"
+        fill="#8FBF9C"/>
+</svg>

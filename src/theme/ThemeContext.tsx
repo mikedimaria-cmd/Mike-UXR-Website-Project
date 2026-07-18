@@ -43,12 +43,22 @@ function ensureThemeFonts(id: ThemeId) {
   document.head.appendChild(link);
 }
 
+// Apply everything a theme changes outside of React: the data-theme attribute
+// (CSS), fonts, and the favicon (the tab joins the costume change).
+function applyThemeDom(id: ThemeId) {
+  ensureThemeFonts(id);
+  document.documentElement.setAttribute("data-theme", id);
+  const favicon = document.getElementById("favicon");
+  if (favicon) {
+    favicon.setAttribute("href", getTheme(id).favicon);
+  }
+}
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<ThemeId>(readInitialTheme);
 
   const apply = useCallback((id: ThemeId, persist: boolean) => {
-    ensureThemeFonts(id);
-    document.documentElement.setAttribute("data-theme", id);
+    applyThemeDom(id);
     if (persist) {
       try {
         localStorage.setItem(THEME_STORAGE_KEY, id);
@@ -65,8 +75,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     setThemeState((current) => {
       const others = themes.filter((t) => t.id !== current);
       const next = others[Math.floor(Math.random() * others.length)].id;
-      ensureThemeFonts(next);
-      document.documentElement.setAttribute("data-theme", next);
+      applyThemeDom(next);
       return next;
     });
   }, []);

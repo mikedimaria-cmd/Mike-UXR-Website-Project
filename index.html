@@ -9,6 +9,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
+    <!-- Favicon: MD monogram, restyled per theme (synthwave is the default
+         and the .ico fallback for browsers without SVG favicon support) -->
+    <link id="favicon" rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
     <!-- Theme bootstrap: pick the theme BEFORE first paint to avoid a flash
          of the wrong theme. Random on each visit until the visitor explicitly
          picks one in the switcher (which persists to localStorage).
@@ -36,6 +40,16 @@
           theme = themes[Math.floor(Math.random() * themes.length)];
         }
         document.documentElement.setAttribute("data-theme", theme);
+        var favicons = {
+          cascadia: "/favicon-cascadia.svg",
+          gallery: "/favicon-gallery.svg",
+          pixel: "/favicon-pixel.svg",
+          deepfield: "/favicon-deepfield.svg",
+        };
+        var fav = document.getElementById("favicon");
+        if (fav && favicons[theme]) {
+          fav.setAttribute("href", favicons[theme]);
+        }
         if (fonts[theme]) {
           var link = document.createElement("link");
           link.id = "theme-fonts-" + theme;
@@ -46,9 +60,6 @@
       })();
     </script>
 
-    <!-- Favicon: custom SVG (neon "MD" monogram on dark grid) — see /public/favicon.svg -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    
     <title>Mike DiMaria - UX Research Portfolio</title>
     <meta name="description" content="UX Research Portfolio - Mike DiMaria. Modern UX Researcher specializing in complex product domains and GenAI-enhanced research methodologies." />
     <meta name="author" content="Mike DiMaria" />

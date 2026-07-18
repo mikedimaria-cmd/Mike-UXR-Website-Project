@@ -15,6 +15,8 @@ export interface ThemeDef {
   tagline: string;
   /** Preview colors shown in the theme switcher */
   swatches: string[];
+  /** Per-theme favicon (MD monogram, restyled) */
+  favicon: string;
   /** Google Fonts stylesheet for fonts this theme needs beyond the base set */
   fontsHref?: string;
 }
@@ -27,12 +29,14 @@ export const themes: ThemeDef[] = [
     name: "Synthwave '84",
     tagline: "The original. Neon terminal energy.",
     swatches: ["#FF33AD", "#00E5FF", "#B84DFF", "#0D0714"],
+    favicon: "/favicon.svg",
   },
   {
     id: "cascadia",
     name: "Cascadia",
     tagline: "Forest floor, glacier light, cedar warmth.",
     swatches: ["#6FC3D4", "#8FBF9C", "#C77B4F", "#0F1B16"],
+    favicon: "/favicon-cascadia.svg",
     fontsHref:
       "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,500;125,700;125,800&display=swap",
   },
@@ -41,6 +45,7 @@ export const themes: ThemeDef[] = [
     name: "Gallery",
     tagline: "Museum catalog. Ink on warm paper.",
     swatches: ["#1C1814", "#9C6B3F", "#7A2E2B", "#FAF6EF"],
+    favicon: "/favicon-gallery.svg",
     fontsHref:
       "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap",
   },
@@ -49,6 +54,7 @@ export const themes: ThemeDef[] = [
     name: "Press Start",
     tagline: "Console-era color. Pixel-perfect labels.",
     swatches: ["#E8433F", "#4FC1E9", "#FFD23F", "#16161E"],
+    favicon: "/favicon-pixel.svg",
     fontsHref:
       "https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600&family=Press+Start+2P&display=swap",
   },
@@ -57,6 +63,7 @@ export const themes: ThemeDef[] = [
     name: "Deep Field",
     tagline: "Point at nothing. Discover everything.",
     swatches: ["#7DD3FC", "#A78BFA", "#F0C987", "#070B14"],
+    favicon: "/favicon-deepfield.svg",
     fontsHref:
       "https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400&display=swap",
   },
