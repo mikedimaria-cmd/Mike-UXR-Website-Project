@@ -1,4 +1,4 @@
-import { ExternalLink, Github, Lock } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 import { Project } from "@/data/portfolio";
 import { useTheme } from "@/theme/ThemeContext";
 
@@ -72,47 +72,22 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       {/* Grid overlay */}
       <div className="absolute inset-0 synthwave-grid opacity-10 group-hover:opacity-20 transition-opacity duration-500" />
 
-      {isConfidential && (
+      {isConfidential && showGlitch && (
         <>
-          {/* Faint lock watermark */}
-          <Lock
-            className="absolute -right-10 top-14 w-56 h-56 text-destructive/10 rotate-12 pointer-events-none"
-            aria-hidden="true"
-          />
-
-          {showGlitch && (
-            <>
-              {/* Classified scanline overlay */}
-              <div
-                className="absolute inset-0 pointer-events-none opacity-[0.22] mix-blend-screen"
-                style={{
-                  background:
-                    "repeating-linear-gradient(180deg, rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 1px, rgba(0,0,0,0) 3px, rgba(0,0,0,0) 6px)",
-                }}
-              />
-              {/* Subtle noise overlay */}
-              <div
-                className="absolute inset-0 pointer-events-none opacity-[0.08] mix-blend-overlay"
-                style={{
-                  background:
-                    "repeating-linear-gradient(135deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, rgba(0,0,0,0) 2px, rgba(0,0,0,0) 4px)",
-                }}
-              />
-            </>
-          )}
-          {/* Redaction bars — read as redacted ink in every theme */}
+          {/* Classified scanline overlay */}
           <div
-            className="absolute left-6 right-10 top-[46%] h-3 rounded-sm pointer-events-none opacity-70"
+            className="absolute inset-0 pointer-events-none opacity-[0.22] mix-blend-screen"
             style={{
               background:
-                "linear-gradient(90deg, rgba(10,6,18,0.55) 0%, rgba(10,6,18,0.35) 60%, rgba(10,6,18,0) 100%)",
+                "repeating-linear-gradient(180deg, rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 1px, rgba(0,0,0,0) 3px, rgba(0,0,0,0) 6px)",
             }}
           />
+          {/* Subtle noise overlay */}
           <div
-            className="absolute left-10 right-20 top-[58%] h-3 rounded-sm pointer-events-none opacity-60"
+            className="absolute inset-0 pointer-events-none opacity-[0.08] mix-blend-overlay"
             style={{
               background:
-                "linear-gradient(90deg, rgba(10,6,18,0.50) 0%, rgba(10,6,18,0.30) 55%, rgba(10,6,18,0) 100%)",
+                "repeating-linear-gradient(135deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, rgba(0,0,0,0) 2px, rgba(0,0,0,0) 4px)",
             }}
           />
         </>
