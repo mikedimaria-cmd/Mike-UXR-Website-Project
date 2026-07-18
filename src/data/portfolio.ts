@@ -66,9 +66,10 @@ export const projects: Project[] = [
   {
     id: "portfolio-v2",
     title: "Mike-DiMaria.com v2",
-    description: "The platform you are looking at. A portfolio reimagined as a retro-futurist digital terminal, bridging professional UXR work with personal creative engineering.",
+    description:
+      "The platform you're looking at. One portfolio, five worlds: retrofuturism, the mountains, art, gaming, and deep space. Each theme is built around something I love, down to the type, the copy, and the portrait.\n\nThe theme you're seeing now was chosen at random. The switcher in the corner holds the rest.",
     role: "Art Director & Dev",
-    techStack: ["React", "Shadcn/UI", "Synthwave Design System"],
+    techStack: ["React", "Shadcn/UI", "5-Theme Design System"],
     link: "https://mike-dimaria.com",
     status: "Building",
     vibe: "neon-purple"

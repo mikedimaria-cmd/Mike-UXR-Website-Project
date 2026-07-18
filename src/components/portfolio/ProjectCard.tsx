@@ -126,7 +126,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         </div>
 
         {/* Description */}
-        <p className="text-muted-foreground text-base leading-relaxed mb-6">
+        <p className="text-muted-foreground text-base leading-relaxed mb-6 whitespace-pre-line">
           {project.description}
         </p>
 
