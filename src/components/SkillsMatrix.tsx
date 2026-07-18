@@ -25,7 +25,8 @@ const arsenal = [
 ];
 
 const SkillsMatrix = () => {
-  const { voice } = useTheme();
+  const { voice, theme } = useTheme();
+  const isPixel = theme === "pixel";
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -80,25 +81,45 @@ const SkillsMatrix = () => {
               </span>
             </div>
             
-            {/* Bar Container */}
-            <div className="h-2 bg-muted/50 rounded-full overflow-hidden backdrop-blur-sm border border-foreground/10">
-              {/* Animated Fill Bar */}
-              <div
-                className="h-full rounded-full transition-all duration-1000 ease-out relative"
-                style={{
-                  width: isVisible ? `${attr.level}%` : "0%",
-                  transitionDelay: `${index * 100}ms`,
-                  background: `linear-gradient(90deg, 
-                    hsl(var(--neon-purple)) 0%, 
-                    hsl(var(--neon-cyan)) 100%
-                  )`,
-                  boxShadow: isVisible ? "var(--bar-glow)" : "none",
-                }}
-              >
-                {/* Subtle shine effect on top of the bar */}
-                <div className="absolute top-0 right-0 bottom-0 w-[2px] bg-white/50 blur-[1px]" />
+            {isPixel ? (
+              /* HP blocks — ten segments, filled left to right like a health bar */
+              <div className="flex gap-1" role="presentation">
+                {Array.from({ length: 10 }).map((_, block) => (
+                  <div
+                    key={block}
+                    className="h-2.5 flex-1 transition-opacity duration-200"
+                    style={{
+                      background:
+                        block < Math.round(attr.level / 10)
+                          ? "hsl(var(--status-live))"
+                          : "hsl(var(--muted) / 0.7)",
+                      opacity: isVisible ? 1 : 0,
+                      transitionDelay: `${index * 100 + block * 50}ms`,
+                    }}
+                  />
+                ))}
               </div>
-            </div>
+            ) : (
+              /* Bar Container */
+              <div className="h-2 bg-muted/50 rounded-full overflow-hidden backdrop-blur-sm border border-foreground/10">
+                {/* Animated Fill Bar */}
+                <div
+                  className="h-full rounded-full transition-all duration-1000 ease-out relative"
+                  style={{
+                    width: isVisible ? `${attr.level}%` : "0%",
+                    transitionDelay: `${index * 100}ms`,
+                    background: `linear-gradient(90deg,
+                      hsl(var(--neon-purple)) 0%,
+                      hsl(var(--neon-cyan)) 100%
+                    )`,
+                    boxShadow: isVisible ? "var(--bar-glow)" : "none",
+                  }}
+                >
+                  {/* Subtle shine effect on top of the bar */}
+                  <div className="absolute top-0 right-0 bottom-0 w-[2px] bg-white/50 blur-[1px]" />
+                </div>
+              </div>
+            )}
           </div>
         ))}
       </div>

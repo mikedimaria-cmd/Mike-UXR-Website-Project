@@ -1,6 +1,22 @@
-import portraitImage from "@/assets/portrait.png";
+import portraitSynthwave from "@/assets/portrait.png";
+import portraitCascadia from "@/assets/portrait-cascadia.png";
+import portraitGallery from "@/assets/portrait-gallery.jpg";
+import portraitPixel from "@/assets/portrait-pixel.png";
+import portraitDeepfield from "@/assets/portrait-deepfield.jpg";
+import { ThemeId } from "@/theme/themes";
+import { useTheme } from "@/theme/ThemeContext";
+
+// One portrait per theme; the browser only downloads the active theme's image.
+const portraits: Record<ThemeId, string> = {
+  synthwave: portraitSynthwave,
+  cascadia: portraitCascadia,
+  gallery: portraitGallery,
+  pixel: portraitPixel,
+  deepfield: portraitDeepfield,
+};
 
 const Portrait = () => {
+  const { theme } = useTheme();
   return (
     <div className="relative group">
       {/* Outer glow effect */}
@@ -11,7 +27,7 @@ const Portrait = () => {
         {/* Inner container with image */}
         <div className="relative overflow-hidden rounded-xl bg-background">
           <img
-            src={portraitImage}
+            src={portraits[theme]}
             alt="Mike DiMaria"
             className="w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover transition-transform duration-500 group-hover:scale-105"
           />

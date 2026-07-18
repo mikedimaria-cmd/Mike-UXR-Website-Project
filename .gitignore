@@ -84,3 +84,6 @@ Thumbs.db
 
 # Netlify
 .netlify
+
+# Full-res portrait source art (local only — 16MB, optimized copies live in src/assets)
+design/portrait-originals/

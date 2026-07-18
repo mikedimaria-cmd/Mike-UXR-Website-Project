@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { ExperienceItem } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
+import { useTheme } from "@/theme/ThemeContext";
 
 interface ExperienceLogProps {
   experiences: ExperienceItem[];
 }
 
 const ExperienceLog = ({ experiences }: ExperienceLogProps) => {
+  const { theme } = useTheme();
+  const isConstellation = theme === "deepfield";
   const [visibleItems, setVisibleItems] = useState<Set<string>>(new Set());
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -34,15 +37,20 @@ const ExperienceLog = ({ experiences }: ExperienceLogProps) => {
 
   return (
     <div ref={containerRef} className="relative space-y-12 md:space-y-16 pl-4 md:pl-0">
-      {items(experiences, visibleItems)}
+      {items(experiences, visibleItems, isConstellation)}
     </div>
   );
 };
 
 // Helper to render items nicely
-const items = (experiences: ExperienceItem[], visibleItems: Set<string>) => {
+const items = (
+  experiences: ExperienceItem[],
+  visibleItems: Set<string>,
+  isConstellation: boolean
+) => {
   return experiences.map((exp, index) => {
     const isVisible = visibleItems.has(exp.id);
+    const isLast = index === experiences.length - 1;
     const Icon = exp.icon;
 
     return (
@@ -56,21 +64,61 @@ const items = (experiences: ExperienceItem[], visibleItems: Set<string>) => {
         style={{ transitionDelay: `${index * 150}ms` }}
       >
         {/* Left Column: Icon & Node */}
-        <div className="relative flex flex-col items-center">
-          {/* The Icon Bubble */}
-          <div
-            className={cn(
-              "relative z-10 w-14 h-14 rounded-full border border-foreground/10 bg-background flex items-center justify-center transition-all duration-500",
-              isVisible ? "border-primary/40 shadow-[var(--node-glow)]" : "scale-90"
-            )}
-          >
-            <Icon
+        <div className="relative flex flex-col items-center self-stretch">
+          {isConstellation ? (
+            /* Constellation star: a point of light where the icon bubble was */
+            <div className="relative z-10 w-14 h-14 flex items-center justify-center">
+              <span
+                className={cn(
+                  "relative block w-2.5 h-2.5 rounded-full bg-primary transition-all duration-700",
+                  isVisible
+                    ? "opacity-100 shadow-[0_0_14px_hsl(var(--primary)/0.9),0_0_36px_hsl(var(--primary)/0.4)]"
+                    : "opacity-30 scale-50"
+                )}
+              >
+                {/* Cross glints */}
+                <span
+                  className={cn(
+                    "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-px bg-primary/40 transition-opacity duration-1000",
+                    isVisible ? "opacity-100" : "opacity-0"
+                  )}
+                  aria-hidden="true"
+                />
+                <span
+                  className={cn(
+                    "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-px h-8 bg-primary/40 transition-opacity duration-1000",
+                    isVisible ? "opacity-100" : "opacity-0"
+                  )}
+                  aria-hidden="true"
+                />
+              </span>
+            </div>
+          ) : (
+            /* The Icon Bubble */
+            <div
               className={cn(
-                "w-6 h-6 transition-colors duration-300",
-                isVisible ? "text-secondary" : "text-muted-foreground"
+                "relative z-10 w-14 h-14 rounded-full border border-foreground/10 bg-background flex items-center justify-center transition-all duration-500",
+                isVisible ? "border-primary/40 shadow-[var(--node-glow)]" : "scale-90"
               )}
+            >
+              <Icon
+                className={cn(
+                  "w-6 h-6 transition-colors duration-300",
+                  isVisible ? "text-secondary" : "text-muted-foreground"
+                )}
+              />
+            </div>
+          )}
+          {/* Line connecting this star to the next — spans the gap between items */}
+          {isConstellation && !isLast && (
+            <div
+              className={cn(
+                "absolute left-1/2 -translate-x-1/2 top-12 -bottom-14 md:-bottom-20 w-px bg-gradient-to-b from-primary/40 via-primary/20 to-primary/5 transition-opacity duration-1000",
+                isVisible ? "opacity-100" : "opacity-0"
+              )}
+              aria-hidden="true"
             />
-          </div>
+          )}
         </div>
 
         {/* Right Column: Content Card */}

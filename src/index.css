@@ -763,3 +763,21 @@
   border-color: hsl(var(--primary) / 0.4);
   box-shadow: none;
 }
+
+/* ---------- Icon stroke tuning (Lucide) ----------
+   Line icons adapt to each theme's type weight: delicate for the thin/serif
+   themes, sturdier for Cascadia, square-capped and chunky for Press Start. */
+[data-theme="gallery"] .lucide,
+[data-theme="deepfield"] .lucide {
+  stroke-width: 1.25;
+}
+
+[data-theme="cascadia"] .lucide {
+  stroke-width: 1.75;
+}
+
+[data-theme="pixel"] .lucide {
+  stroke-width: 2.5;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
