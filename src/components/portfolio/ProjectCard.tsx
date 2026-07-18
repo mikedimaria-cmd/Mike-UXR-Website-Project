@@ -6,49 +6,18 @@ interface ProjectCardProps {
   project: Project;
 }
 
-// Vibe-based styling mapping
-const vibeStyles = {
-  "neon-pink": {
-    border: "border-neon-pink",
-    borderHover: "hover:border-neon-pink",
-    text: "text-neon-pink",
-    textGlow: "text-glow-pink",
-    boxGlow: "hover:box-glow-pink",
-    bg: "bg-neon-pink/5",
-    badge: "bg-neon-pink/20 text-neon-pink border-neon-pink/30",
-  },
-  "neon-cyan": {
-    border: "border-neon-cyan",
-    borderHover: "hover:border-neon-cyan",
-    text: "text-neon-cyan",
-    textGlow: "text-glow-cyan",
-    boxGlow: "hover:box-glow-cyan",
-    bg: "bg-neon-cyan/5",
-    badge: "bg-neon-cyan/20 text-neon-cyan border-neon-cyan/30",
-  },
-  "neon-purple": {
-    border: "border-neon-purple",
-    borderHover: "hover:border-neon-purple",
-    text: "text-neon-purple",
-    textGlow: "text-glow-purple",
-    boxGlow: "hover:box-glow-purple",
-    bg: "bg-neon-purple/5",
-    badge: "bg-neon-purple/20 text-neon-purple border-neon-purple/30",
-  },
-  "sunset-orange": {
-    border: "border-sunset-orange",
-    borderHover: "hover:border-sunset-orange",
-    text: "text-sunset-orange",
-    textGlow: "",
-    boxGlow: "hover:shadow-[0_0_15px_hsl(var(--sunset-orange)/0.5)]",
-    bg: "bg-sunset-orange/5",
-    badge: "bg-sunset-orange/20 text-sunset-orange border-sunset-orange/30",
-  },
-};
+// Color encodes function, not card identity: all cards share the same quiet
+// chrome; the theme's accents appear only in consistent roles (labels, the
+// action link, the status dot). The confidential card's red is the one
+// deliberate exception.
+const statusVar = {
+  Live: "--status-live",
+  Beta: "--status-beta",
+  Building: "--status-building",
+} as const;
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
   const { theme, voice } = useTheme();
-  const styles = vibeStyles[project.vibe];
   const isConfidential = project.id === "case-studies-confidential";
   // The glitch/classified treatment is part of the synthwave bit; refined
   // themes keep the lock watermark and redaction bars but drop the noise.
@@ -58,16 +27,15 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
     <div
       className={`
         card-synthwave rounded-2xl p-8 h-full flex flex-col
-        border-2 ${styles.border} ${styles.borderHover}
-        ${styles.boxGlow}
-        transform transition-all duration-500 
+        border border-border/70 hover:border-primary/40
+        transform transition-all duration-500
         hover:-translate-y-2
         group
         relative overflow-hidden
       `}
     >
-      {/* Background glow effect */}
-      <div className={`absolute inset-0 ${styles.bg} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+      {/* Background tint on hover */}
+      <div className="absolute inset-0 bg-primary/[0.04] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       
       {/* Grid overlay */}
       <div className="absolute inset-0 synthwave-grid opacity-10 group-hover:opacity-20 transition-opacity duration-500" />
@@ -98,7 +66,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         {/* Header with status badge */}
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
-            <h3 className={`font-display text-2xl font-medium ${styles.text} ${styles.textGlow} mb-2`}>
+            <h3 className="font-display text-2xl font-medium text-foreground mb-2">
               {isConfidential && showGlitch ? (
                 <span className="relative inline-flex items-center">
                   {/* Crisp base text with controlled "classified" styling */}
@@ -141,14 +109,20 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
               {project.role}
             </p>
           </div>
-          <span
-            className={`
-              px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider
-              border ${isConfidential ? "bg-destructive/15 text-destructive border-destructive/30" : styles.badge}
-            `}
-          >
-            {isConfidential ? voice.confidentialBadge : project.status}
-          </span>
+          {isConfidential ? (
+            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border bg-destructive/15 text-destructive border-destructive/30 whitespace-nowrap">
+              {voice.confidentialBadge}
+            </span>
+          ) : (
+            <span className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-border/70 text-muted-foreground whitespace-nowrap">
+              <span
+                className="w-1.5 h-1.5 rounded-full"
+                style={{ background: `hsl(var(${statusVar[project.status]}))` }}
+                aria-hidden="true"
+              />
+              {project.status}
+            </span>
+          )}
         </div>
 
         {/* Description */}
@@ -188,7 +162,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
               rel={isConfidential ? undefined : "noopener noreferrer"}
               className={`
                 flex items-center gap-2 text-base font-medium
-                ${isConfidential ? "text-destructive hover:text-destructive/90" : styles.text} group/link
+                ${isConfidential ? "text-destructive hover:text-destructive/90" : "text-primary hover:text-primary/80"} group/link
                 transition-all duration-300
               `}
             >

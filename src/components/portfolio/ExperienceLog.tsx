@@ -6,21 +6,6 @@ interface ExperienceLogProps {
   experiences: ExperienceItem[];
 }
 
-// Vibe to text color mapping (for dynamic classes)
-const vibeTextColors = {
-  "neon-pink": "text-neon-pink",
-  "neon-cyan": "text-neon-cyan",
-  "neon-purple": "text-neon-purple",
-  "sunset-orange": "text-sunset-orange",
-};
-
-const vibeGlowClasses = {
-  "neon-pink": "text-glow-pink",
-  "neon-cyan": "text-glow-cyan",
-  "neon-purple": "text-glow-purple",
-  "sunset-orange": "",
-};
-
 const ExperienceLog = ({ experiences }: ExperienceLogProps) => {
   const [visibleItems, setVisibleItems] = useState<Set<string>>(new Set());
   const containerRef = useRef<HTMLDivElement>(null);
@@ -49,18 +34,13 @@ const ExperienceLog = ({ experiences }: ExperienceLogProps) => {
 
   return (
     <div ref={containerRef} className="relative space-y-12 md:space-y-16 pl-4 md:pl-0">
-      {items(experiences, visibleItems, vibeTextColors, vibeGlowClasses)}
+      {items(experiences, visibleItems)}
     </div>
   );
 };
 
 // Helper to render items nicely
-const items = (
-  experiences: ExperienceItem[], 
-  visibleItems: Set<string>,
-  vibeTextColors: Record<string, string>,
-  vibeGlowClasses: Record<string, string>
-) => {
+const items = (experiences: ExperienceItem[], visibleItems: Set<string>) => {
   return experiences.map((exp, index) => {
     const isVisible = visibleItems.has(exp.id);
     const Icon = exp.icon;
@@ -81,14 +61,14 @@ const items = (
           <div
             className={cn(
               "relative z-10 w-14 h-14 rounded-full border border-foreground/10 bg-background flex items-center justify-center transition-all duration-500",
-              isVisible ? "border-neon-pink/50 shadow-[var(--node-glow)]" : "scale-90"
+              isVisible ? "border-primary/40 shadow-[var(--node-glow)]" : "scale-90"
             )}
           >
-            <Icon 
+            <Icon
               className={cn(
                 "w-6 h-6 transition-colors duration-300",
-                isVisible ? vibeTextColors[exp.vibe] : "text-muted-foreground"
-              )} 
+                isVisible ? "text-secondary" : "text-muted-foreground"
+              )}
             />
           </div>
         </div>
@@ -104,12 +84,12 @@ const items = (
             )}
           >
             {/* Little decorative dot at the end of the connector */}
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-neon-cyan rounded-full shadow-[var(--dot-glow)]" />
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-secondary rounded-full shadow-[var(--dot-glow)]" />
           </div>
 
           {/* Date & Role */}
           <div className="flex flex-col md:flex-row md:items-center gap-2 mb-2">
-            <span className="font-mono text-xs text-neon-cyan/80 tracking-widest uppercase">
+            <span className="font-mono text-xs text-secondary/80 tracking-widest uppercase">
               {exp.period}
             </span>
             <span className="hidden md:inline text-foreground/20">•</span>
@@ -119,7 +99,7 @@ const items = (
           </div>
 
           {/* Company */}
-          <h4 className={cn("text-lg font-medium mb-4", vibeTextColors[exp.vibe], vibeGlowClasses[exp.vibe])}>
+          <h4 className="text-lg font-medium mb-4 text-secondary">
             {exp.company}
           </h4>
 
