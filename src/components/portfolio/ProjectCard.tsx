@@ -130,6 +130,13 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           {project.description}
         </p>
 
+        {/* Workflow credit — quieter than a stack chip, more deliberate */}
+        {project.builtWith && (
+          <p className="text-xs font-mono text-muted-foreground/80 -mt-4 mb-6">
+            {project.builtWith}
+          </p>
+        )}
+
         {/* Tech Stack */}
         <div className="mb-6">
           <p className="text-xs font-display text-secondary uppercase tracking-wider mb-2">

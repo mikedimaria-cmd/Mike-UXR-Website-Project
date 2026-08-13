@@ -14,6 +14,8 @@ export interface Project {
   description: string;
   role: string;
   techStack: string[];
+  /** Small workflow credit rendered under the description (e.g. "Built with Claude Code") */
+  builtWith?: string;
   link?: string;
   github?: string;
   status: "Live" | "Beta" | "Building";
@@ -44,10 +46,12 @@ export const projects: Project[] = [
   },
   {
     id: "draft-forge",
-    title: "BFL Draft Forge",
-    description: "A custom 'Keeper Rule' engine and draft companion for the Bethlehem Fantasy League. Automates complex league logic and manages draft order.",
+    title: "BFL Forge",
+    description:
+      "An installable PWA that runs a 10-team fantasy league year-round: a keeper-valuation engine that prices every roster move against live FantasyPros market data, automated ESPN score ingestion, and an AI-generated weekly \"shame\" report with shareable social cards. No accounts, no app store. Real users every week.\n\nThe keeper engine encodes the league's actual rulebook, guarded by a test suite, and the whole thing runs serverless on scheduled syncs. Commissioner-grade automation.",
     role: "League Commissioner & Dev",
-    techStack: ["React", "Vite", "Cursor AI", "Claude Sonnet"],
+    techStack: ["React", "TypeScript", "Firebase", "Claude API", "PWA"],
+    builtWith: "Built with Claude Code",
     link: "https://bfl-draft-forge.web.app/",
     status: "Live",
     vibe: "neon-cyan"
