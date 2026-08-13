@@ -38,8 +38,9 @@ export const projects: Project[] = [
     id: "gastrogaz",
     title: "GastroGaz",
     description: "An AI-enhanced health tracking application for cat owners. Leverages Gemini API to analyze food labels and track digestive health, weight, and medications.",
-    role: "Full-Stack Developer (Vibe-Coded)",
+    role: "Full-Stack Developer",
     techStack: ["React", "Firebase", "Gemini API", "Tailwind"],
+    builtWith: "Built with Cursor AI",
     link: "https://gastrogaz-7bb0e.web.app/",
     status: "Beta",
     vibe: "neon-pink" 
@@ -61,8 +62,9 @@ export const projects: Project[] = [
     title: "Lorekeeper",
     description:
       "A personal game tracking PWA with real-time IGDB search, Supabase persistence, and a moody cinematic design system. Track your library across Xbox, PS5, and PC with notes on why each game matters.",
-    role: "Full-Stack Developer (Vibe-Coded)",
+    role: "Full-Stack Developer",
     techStack: ["React", "Vite", "Supabase", "IGDB API", "Firebase", "Tailwind"],
+    builtWith: "Built with Claude Code",
     link: "https://lorekeeper-games.web.app",
     status: "Live",
     vibe: "neon-cyan",
@@ -74,6 +76,7 @@ export const projects: Project[] = [
       "The platform you're looking at. One portfolio, five worlds: retrofuturism, the mountains, art, gaming, and deep space. Each theme is built around something I love, down to the type, the copy, and the portrait.\n\nThe theme you're seeing now was chosen at random. The switcher in the corner holds the rest.",
     role: "Art Director & Dev",
     techStack: ["React", "Shadcn/UI", "5-Theme Design System"],
+    builtWith: "Built with Claude Code",
     link: "https://mike-dimaria.com",
     status: "Building",
     vibe: "neon-purple"
