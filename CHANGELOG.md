@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.1] - 2026-08-13
+
+### Changed
+- Mike-DiMaria.com v2 card: copy now describes the five-theme system; tech chip updated to "5-Theme Design System"
+- BFL Draft Forge card rewritten as "BFL Forge": full-season league platform (keeper-valuation engine against live market data, automated ESPN ingestion, AI-generated weekly reports) with running-stack chips (React, TypeScript, Firebase, Claude API, PWA)
+- Added per-project "Built with" workflow credit line under card descriptions (Claude Code, Cursor AI)
+- Removed "(Vibe-Coded)" from GastroGaz and Lorekeeper roles
+- Project card descriptions now render paragraph breaks
+
 ## [0.4.0] - 2026-07-18
 
 ### Added
